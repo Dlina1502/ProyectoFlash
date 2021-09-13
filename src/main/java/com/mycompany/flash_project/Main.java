@@ -6,6 +6,7 @@
 package com.mycompany.flash_project;
 
 
+import conexion_y_funciones.*;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,9 +28,11 @@ public class Main {
      */
     public static void main(String[] args) throws SQLException, URISyntaxException {
         // TODO code application logic here
-        Conexion conexion = new Conexion();
-        conexion.getConnection();
-        conexion.lanzar();
+        FuncionesGerente gerente = new FuncionesGerente();
+        gerente.registrarSedes("brisas", "calle 75", "cali");
+        
+
+        
     }
 
     
