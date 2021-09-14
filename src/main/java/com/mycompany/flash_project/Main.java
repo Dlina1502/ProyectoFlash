@@ -29,9 +29,10 @@ public class Main {
     public static void main(String[] args) throws SQLException, URISyntaxException {
         // TODO code application logic here
         FuncionesGerente gerente = new FuncionesGerente();
-        gerente.registrarSedes("brisas", "calle 75", "cali");
+        gerente.registrarCiudad("california");
+        boolean aux = gerente.registrarSedes("brisas", "calle", "california");
         
-
+        System.out.println(aux);
         
     }
 
