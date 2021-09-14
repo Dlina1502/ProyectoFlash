@@ -6,29 +6,15 @@
 package conexion_y_funciones;
 
 import java.net.URISyntaxException;
-import java.sql.*;
-import javax.swing.JOptionPane;
-
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author esteban
  */
 public class FuncionesGerente extends Conexion{
-    private Connection conexion;
-    private Statement statement;
-    private String sql;
-    
-    public FuncionesGerente(){
-        
-        try {
-            conexion = getConnection();
-            statement = conexion.createStatement();
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
-
-    }
     /*public void registrarUsuario(int cedula, String sede, String rol_empleado, 
                                 String estado, String nombre, String apellido1, 
                                 String apellido2, int telefono, String correo) throws SQLException, URISyntaxException
@@ -50,46 +36,17 @@ public class FuncionesGerente extends Conexion{
     }
     Funcion en proceso */
     
-    public boolean registrarCiudad(String ciudad) {
-        
+    public void registrarSedes(String barrio, String direccion, String ciudad){
+        String sql = "SELECT registrarSede ('" + barrio + "','" + direccion + "','" + ciudad + "')" ;
         
         try {
-            sql = "INSERT INTO ciudad_sede (ciudad) values (?)";
-            PreparedStatement statementAux = conexion.prepareStatement(sql);
-            statementAux.setString(1, ciudad);
-            statementAux.executeUpdate();
-            return true;
-        } catch (Exception e) {
-            System.out.println("no se pudo agregar. ERROR:" + e);
+            Statement statement = getConnection().createStatement();
+            statement.executeQuery(sql);
+            System.out.println("sede registrada con exito");
         }
-        return false;
-    }
-    
-    public boolean registrarSedes(String barrio, String direccion, String ciudad) {
-
-        sql = "SELECT EXISTS(SELECT * FROM ciudad_sede WHERE ciudad='" + ciudad + "' )";
-        boolean res = false;
-
-        try {
-            ResultSet respuesta = statement.executeQuery(sql);
-
-            while (respuesta.next()) {
-                res = respuesta.getBoolean(1);
-            }
-
-            if (res) {
-                sql = "SELECT registrarSede ('" + barrio + "','" + direccion + "','" + ciudad + "')";
-                statement.executeQuery(sql);
-                System.out.println("sede registrada con exito");
-                return true;
-            } else {
-                System.out.println("la ciudad no existe en la base de datos");
-            }
-
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
+        catch (Exception e){
+            System.out.println("sede no se pudo registrar. Error: "+ e );
         }
-
-        return false;
+        
     }
 }
