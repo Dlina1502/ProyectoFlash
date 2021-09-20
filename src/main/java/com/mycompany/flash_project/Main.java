@@ -7,6 +7,7 @@ package com.mycompany.flash_project;
 
 
 import conexion_y_funciones.*;
+import interfaz.JFrame_inicio;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,10 +32,11 @@ public class Main {
         Funciones gerente = new Funciones();
         String aux;
         //aux = gerente.registrarUsuario("10050364890", "brisas","gerente","activo", "santiago","hincapie", "","3158870896","niidea@hotmail.com", "pirimpampa");
-        gerente.login("niidea@hotmail.co", "pirimpampa");
+        gerente.login("niidea@hotmail.com", "pirimpampa");
         aux = gerente.get_rol();
         System.out.println(aux);
         
+         new JFrame_inicio().setVisible(true);
     }
 
     
