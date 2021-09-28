@@ -29,7 +29,7 @@ public class JFrame_inicio extends javax.swing.JFrame {
     public JFrame_inicio() {
         this.setContentPane(fondo);
         initComponents();
-        
+
     }
 
     /**
@@ -86,10 +86,6 @@ public class JFrame_inicio extends javax.swing.JFrame {
                 jPasswordField1MouseClicked(evt);
             }
         });
-
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/botonLogin (1).jpg"))); // NOI18N
@@ -175,7 +171,24 @@ public class JFrame_inicio extends javax.swing.JFrame {
         String pass = new String(clave);
         
         if (funcion.login(correo, pass)){
-            System.out.println("logueado");
+            String rol = funcion.get_rol();
+            
+            if (rol.toUpperCase().equals("gerente".toUpperCase())){
+                JFrame_gerente ventanaGerente = new JFrame_gerente();
+                ventanaGerente.setVisible(true);
+                this.dispose();
+            }
+            if (rol.toUpperCase().equals("operador".toUpperCase())){
+                JFrame_operador ventanaOperador = new JFrame_operador();
+                ventanaOperador.setVisible(true);
+                this.dispose();
+            }
+            if (rol.toUpperCase().equals("secretaria".toUpperCase())){
+                JFrame_secretaria ventanaSecretaria = new JFrame_secretaria();
+                ventanaSecretaria.setVisible(true);
+                this.dispose();
+            }
+            
         };
         
         
