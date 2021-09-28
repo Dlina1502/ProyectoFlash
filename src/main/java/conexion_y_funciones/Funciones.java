@@ -45,10 +45,7 @@ public class Funciones extends Conexion {
                 rol = resultSet.getString(1);
             }
             if (rol != null){
-                System.out.println("usuario logueado");
                 return true;
-            }else{
-                System.out.println("usuario o contraseña incorrectos");
             }
             
         }
@@ -69,7 +66,7 @@ public class Funciones extends Conexion {
             String apellido2, String telefono, String correo, String clave) {
         try {
             sql = "SELECT registrar_usuario ('" + cedula.toUpperCase() + "','" + nomSede.toUpperCase() + "','" + rol.toUpperCase() + "','" + estado.toUpperCase() + "','"
-                    + nombre.toUpperCase() + "','" + apellido1.toUpperCase() + "','" + apellido2.toUpperCase() + "','" + telefono.toUpperCase() + "','" + correo.toUpperCase() + "','" + clave.toUpperCase() + "')";
+                    + nombre.toUpperCase() + "','" + apellido1.toUpperCase() + "','" + apellido2.toUpperCase() + "','" + telefono.toUpperCase() + "','" + correo.toUpperCase() + "','" + clave + "')";
             statement.executeQuery(sql);
             return true;
         } catch (SQLException e) {

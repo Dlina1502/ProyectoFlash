@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -189,7 +190,9 @@ public class JFrame_inicio extends javax.swing.JFrame {
                 this.dispose();
             }
             
-        };
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+        }
         
         
     }//GEN-LAST:event_jLabel6MouseClicked

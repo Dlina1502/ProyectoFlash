@@ -32,12 +32,9 @@ public class Main {
     public static void main(String[] args) throws SQLException, URISyntaxException {
         // TODO code application logic here
 
-
-         new JFrame_inicio().setVisible(true);
-
         
-        new GestUsuario_gerente().setVisible(true);
-
+        //new JFrame_inicio().setVisible(true);
+         new JFrame_inicio().setVisible(true);
     }
 
     

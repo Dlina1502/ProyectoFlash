@@ -123,9 +123,6 @@ public class GestUsuario_gerente extends javax.swing.JFrame implements ActionLis
         jPanel2.add(eliminarUsuario);
     }//GEN-LAST:event_botonEliminarMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
