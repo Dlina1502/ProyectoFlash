@@ -68,8 +68,8 @@ public class Funciones extends Conexion {
             String estado, String nombre, String apellido1,
             String apellido2, String telefono, String correo, String clave) {
         try {
-            sql = "SELECT registrar_usuario ('" + cedula + "','" + nomSede + "','" + rol + "','" + estado + "','"
-                    + nombre + "','" + apellido1 + "','" + apellido2 + "','" + telefono + "','" + correo + "','" + clave + "')";
+            sql = "SELECT registrar_usuario ('" + cedula.toUpperCase() + "','" + nomSede.toUpperCase() + "','" + rol.toUpperCase() + "','" + estado.toUpperCase() + "','"
+                    + nombre.toUpperCase() + "','" + apellido1.toUpperCase() + "','" + apellido2.toUpperCase() + "','" + telefono.toUpperCase() + "','" + correo.toUpperCase() + "','" + clave.toUpperCase() + "')";
             statement.executeQuery(sql);
             return true;
         } catch (SQLException e) {
@@ -84,7 +84,7 @@ public class Funciones extends Conexion {
 
         try {
 
-            sql = "SELECT registrarSede ('" + barrio + "','" + direccion + "','" + id_ciudad + "')";
+            sql = "SELECT registrarSede ('" + barrio.toUpperCase() + "','" + direccion + "','" + id_ciudad + "')";
             statement.executeQuery(sql);
             System.out.println("sede registrada con exito");
             return true;
@@ -102,7 +102,7 @@ public class Funciones extends Conexion {
         try {
             sql = "INSERT INTO ciudad_sede (ciudad) values (?)";
             PreparedStatement statementAux = conexion.prepareStatement(sql);
-            statementAux.setString(1, ciudad);
+            statementAux.setString(1, ciudad.toUpperCase());
             statementAux.executeUpdate();
             return true;
         } catch (SQLException e) {

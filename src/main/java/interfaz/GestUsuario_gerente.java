@@ -122,21 +122,15 @@ public class GestUsuario_gerente extends javax.swing.JFrame {
 
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/log.jpg"))); // NOI18N
 
-        jSeparator61.setBackground(new java.awt.Color(0, 0, 0));
-
         jTextField37.setForeground(new java.awt.Color(153, 153, 153));
         jTextField37.setText("Documento de identificación");
         jTextField37.setBorder(null);
         jTextField37.setPreferredSize(new java.awt.Dimension(7, 24));
 
-        jSeparator62.setBackground(new java.awt.Color(0, 0, 0));
-
         jTextField38.setForeground(new java.awt.Color(153, 153, 153));
         jTextField38.setText("Nombre");
         jTextField38.setBorder(null);
         jTextField38.setPreferredSize(new java.awt.Dimension(7, 24));
-
-        jSeparator63.setBackground(new java.awt.Color(0, 0, 0));
 
         jTextField39.setForeground(new java.awt.Color(153, 153, 153));
         jTextField39.setText("Segundo apellido");
@@ -153,12 +147,8 @@ public class GestUsuario_gerente extends javax.swing.JFrame {
             }
         });
 
-        jSeparator64.setBackground(new java.awt.Color(0, 0, 0));
-
         jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel38.setText("Datos personales:");
-
-        jSeparator65.setBackground(new java.awt.Color(0, 0, 0));
 
         jTextField41.setForeground(new java.awt.Color(153, 153, 153));
         jTextField41.setText("Teléfono");
@@ -172,10 +162,6 @@ public class GestUsuario_gerente extends javax.swing.JFrame {
 
         jLabel39.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel39.setText("Datos empleado:");
-
-        jSeparator66.setBackground(new java.awt.Color(0, 0, 0));
-
-        jSeparator67.setBackground(new java.awt.Color(0, 0, 0));
 
         jComboBox13.setForeground(new java.awt.Color(153, 153, 153));
         jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione sede donde labora", " " }));
@@ -196,8 +182,6 @@ public class GestUsuario_gerente extends javax.swing.JFrame {
             }
         });
 
-        jSeparator68.setBackground(new java.awt.Color(0, 0, 0));
-
         jPasswordField13.setText("jPasswordField1");
         jPasswordField13.setBorder(null);
         jPasswordField13.setMinimumSize(new java.awt.Dimension(10, 20));
@@ -208,13 +192,9 @@ public class GestUsuario_gerente extends javax.swing.JFrame {
             }
         });
 
-        jSeparator69.setBackground(new java.awt.Color(0, 0, 0));
-
         jLabel41.setText("Contraseña:");
 
         jLabel42.setText("Comfirmar contraseña:");
-
-        jSeparator70.setBackground(new java.awt.Color(0, 0, 0));
 
         jPasswordField14.setText("jPasswordField1");
         jPasswordField14.setBorder(null);
@@ -267,7 +247,7 @@ public class GestUsuario_gerente extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jSeparator67)
                         .addComponent(jSeparator66)
-                        .addComponent(jComboBox13, 0, 172, Short.MAX_VALUE)
+                        .addComponent(jComboBox13, 0, 0, Short.MAX_VALUE)
                         .addComponent(jComboBox14, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -380,7 +360,7 @@ public class GestUsuario_gerente extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -419,6 +399,10 @@ public class GestUsuario_gerente extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
