@@ -5,6 +5,7 @@
  */
 package interfaz;
 import conexion_y_funciones.Funciones;
+import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 /**
  *
@@ -118,21 +119,41 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField37.setText("Documento de identificación");
         jTextField37.setBorder(null);
         jTextField37.setPreferredSize(new java.awt.Dimension(7, 24));
+        jTextField37.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField37MouseClicked(evt);
+            }
+        });
 
         jTextField38.setForeground(new java.awt.Color(153, 153, 153));
         jTextField38.setText("Nombre");
         jTextField38.setBorder(null);
         jTextField38.setPreferredSize(new java.awt.Dimension(7, 24));
+        jTextField38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField38MouseClicked(evt);
+            }
+        });
 
         jTextField39.setForeground(new java.awt.Color(153, 153, 153));
         jTextField39.setText("Segundo apellido");
         jTextField39.setBorder(null);
         jTextField39.setPreferredSize(new java.awt.Dimension(7, 24));
+        jTextField39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField39MouseClicked(evt);
+            }
+        });
 
         jTextField40.setForeground(new java.awt.Color(153, 153, 153));
         jTextField40.setText("Primer apellido");
         jTextField40.setBorder(null);
         jTextField40.setPreferredSize(new java.awt.Dimension(7, 24));
+        jTextField40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField40MouseClicked(evt);
+            }
+        });
         jTextField40.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField40jTextField4ActionPerformed(evt);
@@ -146,6 +167,11 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField41.setText("Teléfono");
         jTextField41.setBorder(null);
         jTextField41.setPreferredSize(new java.awt.Dimension(7, 24));
+        jTextField41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField41MouseClicked(evt);
+            }
+        });
         jTextField41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField41jTextField5ActionPerformed(evt);
@@ -156,10 +182,13 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jLabel39.setText("Datos empleado:");
 
         jComboBox13.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione sede donde labora", " " }));
+        jComboBox13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox13ActionPerformed(evt);
+            }
+        });
 
         jComboBox14.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione rol en la empresa", " " }));
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel40.setText("Crear cuenta:");
@@ -168,6 +197,11 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField42.setText("Correo");
         jTextField42.setBorder(null);
         jTextField42.setPreferredSize(new java.awt.Dimension(7, 24));
+        jTextField42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField42MouseClicked(evt);
+            }
+        });
         jTextField42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField42jTextField6ActionPerformed(evt);
@@ -436,7 +470,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField47.setPreferredSize(new java.awt.Dimension(7, 24));
         jTextField47.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField47jTextField4ActionPerformed(evt);
+                jTextField47ActionPerformed(evt);
             }
         });
 
@@ -451,7 +485,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField49.setPreferredSize(new java.awt.Dimension(7, 24));
         jTextField49.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField49jTextField5ActionPerformed(evt);
+                jTextField49ActionPerformed(evt);
             }
         });
 
@@ -467,7 +501,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField50.setPreferredSize(new java.awt.Dimension(7, 24));
         jTextField50.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField50jTextField6ActionPerformed(evt);
+                jTextField50ActionPerformed(evt);
             }
         });
 
@@ -762,6 +796,26 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         
 
     }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jTextField47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField47ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField47ActionPerformed
+
+    private void jTextField49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField49ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField49ActionPerformed
+
+    private void jTextField50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField50ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField50ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
