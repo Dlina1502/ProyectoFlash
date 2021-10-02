@@ -10,6 +10,7 @@ import conexion_y_funciones.*;
 import interfaz.JFrame_operador;
 import interfaz.JFrame_inicio;
 import interfaz.GestUsuario_gerente;
+import interfaz.JFrame_gerente;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,8 +39,9 @@ public class Main {
         aux = gerente.get_rol();
         System.out.println(aux);
         
+        
         //new JFrame_inicio().setVisible(true);
-         new GestUsuario_gerente().setVisible(true);
+         new JFrame_gerente().setVisible(true);
     }
 
     
