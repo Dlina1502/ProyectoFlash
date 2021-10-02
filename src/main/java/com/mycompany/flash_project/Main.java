@@ -9,7 +9,6 @@ package com.mycompany.flash_project;
 import conexion_y_funciones.*;
 import interfaz.JFrame_operador;
 import interfaz.JFrame_inicio;
-import interfaz.GestUsuario_gerente;
 import interfaz.JFrame_gerente;
 import java.net.URISyntaxException;
 import java.sql.Connection;

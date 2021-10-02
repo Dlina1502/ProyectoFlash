@@ -15,12 +15,10 @@ import javax.swing.JPanel;
  * @author Usuario
  */
 public class JFrame_secretaria extends javax.swing.JFrame {
-    FondoPanel fondo = new FondoPanel();
     /**
      * Creates new form JFrame_gerente
      */
     public JFrame_secretaria() {
-        this.setContentPane(fondo);
         initComponents();
     }
 
@@ -33,38 +31,21 @@ public class JFrame_secretaria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GERENTE");
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/botonGestionUser.png"))); // NOI18N
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/botonGestionSede.png"))); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(100, 100, 100))
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel1))
-                .addGap(165, 165, 165))
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         pack();
@@ -102,29 +83,11 @@ public class JFrame_secretaria extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JFrame_secretaria().setVisible(true);
-            }
+            } 
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
-    class FondoPanel extends JPanel
-    {
-        private Image imagen;
-        
-        @Override
-        public void paint(Graphics g)
-        {
-            imagen = new ImageIcon(getClass().getResource("/META-INF/FONDO.jpg")).getImage();
-            
-            g.drawImage(imagen,0, 0, getWidth(), getHeight(),this);
-            
-            setOpaque(false);
-            
-            super.paint(g);
-        }
-    }
 }
