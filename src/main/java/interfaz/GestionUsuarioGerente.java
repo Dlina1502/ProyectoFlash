@@ -18,8 +18,14 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
      */
     public GestionUsuarioGerente() {
         initComponents();
+        //inicializa con las sedes
         funciones.consultar_sedes_combo(jComboBox13);
+        funciones.consultar_sedes_combo(jComboBox15);
+        
+        
+        //inicializa con los roles
         funciones.consultar_roles_combo(jComboBox14);
+        funciones.consultar_roles_combo(jComboBox16);
     }
 
     /**
@@ -490,10 +496,13 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         });
 
         jComboBox15.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione sede donde labora", " " }));
+        jComboBox15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox15ActionPerformed(evt);
+            }
+        });
 
         jComboBox16.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione rol en la empresa", " " }));
 
         jTextField50.setForeground(new java.awt.Color(153, 153, 153));
         jTextField50.setText("Correo");
@@ -506,6 +515,11 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         });
 
         jButton14.setText("MOSTRAR DATOS");
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -816,6 +830,17 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jComboBox15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox15ActionPerformed
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        // TODO add your handling code here:
+        
+        String documentoConsult = jTextField46.getText();
+        funciones.consultar_datos_usuario_editar(documentoConsult, jTextField45, jTextField47, jTextField48, jTextField49, jTextField50, jComboBox15, jComboBox16);
+    }//GEN-LAST:event_jButton14MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
