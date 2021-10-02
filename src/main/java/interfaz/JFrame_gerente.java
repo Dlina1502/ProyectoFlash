@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  */
 public class JFrame_gerente extends javax.swing.JFrame {
     GestionUsuarioGerente gestionUsuario = new GestionUsuarioGerente();
-
+    GestionSedeGerente gestionSede = new GestionSedeGerente();
     
     public JFrame_gerente() { 
         initComponents();
@@ -70,6 +70,11 @@ public class JFrame_gerente extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("GESTIÓN DE SEDES");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -117,13 +122,27 @@ public class JFrame_gerente extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        //gestionUsuario.setVisible(true);       
+        gestionSede.setVisible(false);
+        jPanel7.remove(gestionSede);
+        
+        jPanel7.add(gestionUsuario);
+        gestionUsuario.setVisible(true);
+      
         
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        gestionUsuario.setVisible(false);
+        jPanel7.remove(gestionUsuario);
+        
+        jPanel7.add(gestionSede);
+        gestionSede.setVisible(true);
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
