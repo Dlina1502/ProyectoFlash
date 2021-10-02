@@ -7,12 +7,14 @@ package conexion_y_funciones;
 
 import java.net.URISyntaxException;
 import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
  * @author esteban
  */
-public class Funciones extends Conexion {
+public class Funciones extends Conexion{
 
     //atributos necesarios para la conexion con la base de datos
     private Connection conexion;
@@ -23,7 +25,7 @@ public class Funciones extends Conexion {
     private String rol;
 
     //constructor de la clase
-    public Funciones() {
+    public Funciones()  {
 
         try {
             conexion = getConnection();
@@ -39,6 +41,7 @@ public class Funciones extends Conexion {
     //funcion para obtener el rol de la persona que se logea
     public boolean login (String correo, String clave){
         try{
+            correo = correo.trim();
             sql = "select login ('"+correo+"','"+clave+"')";
             resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
@@ -61,19 +64,20 @@ public class Funciones extends Conexion {
     }
 
     //funcion para registrar usuarios
-    public boolean registrarUsuario(String cedula, String nomSede, String rol,
+    public void registrarUsuario(String cedula, String barrio,String direccion, String ciudad, String rol,
             String estado, String nombre, String apellido1,
             String apellido2, String telefono, String correo, String clave) {
         try {
-            sql = "SELECT registrar_usuario ('" + cedula.toUpperCase() + "','" + nomSede.toUpperCase() + "','" + rol.toUpperCase() + "','" + estado.toUpperCase() + "','"
+            sql = "SELECT registrar_usuario ('" + cedula.toUpperCase() + "','" + barrio.toUpperCase() + "','"+ direccion.toUpperCase() +"','"+ciudad.toUpperCase()+ "','" + rol.toUpperCase() + "','" + estado.toUpperCase() + "','"
                     + nombre.toUpperCase() + "','" + apellido1.toUpperCase() + "','" + apellido2.toUpperCase() + "','" + telefono.toUpperCase() + "','" + correo.toUpperCase() + "','" + clave + "')";
             statement.executeQuery(sql);
-            return true;
+            JOptionPane.showMessageDialog(null,"Usuario registrado con éxito");
+            
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        return false;
+
     }
 
     //funcion para crear sedes
@@ -107,5 +111,45 @@ public class Funciones extends Conexion {
         }
         return false;
     }
-
+    
+    public void consultar_sedes_combo(javax.swing.JComboBox<String> jcombobox){
+        
+        
+        try{
+            sql = "select concat_ws('//',sedes.barrio,sedes.direccion,ciudad_sede.ciudad)  \n" +
+"                   from sedes inner join ciudad_sede on sedes.id_ciudad = ciudad_sede.id_ciudad";
+            resultSet = statement.executeQuery(sql);
+            jcombobox.addItem("Seccione sede donde labora");
+            while (resultSet.next()) {
+                jcombobox.addItem(resultSet.getString(1));
+            }
+            
+            
+        }
+        catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+        
+    }
+    
+    public void consultar_roles_combo(javax.swing.JComboBox<String> jcombobox){
+        
+        
+        try{
+            sql = "select tipo_rol from rol_empleados";
+            resultSet = statement.executeQuery(sql);
+              
+            jcombobox.addItem("Seleccione rol en la empresa");
+            while (resultSet.next()) {
+                jcombobox.addItem(resultSet.getString("tipo_rol"));
+            }
+            
+            
+        }
+        catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+        
+    }
+    
 }

@@ -168,7 +168,7 @@ public class JFrame_inicio extends javax.swing.JFrame {
         String correo = jTextField1.getText();
         char[] clave = jPasswordField1.getPassword();
         
-        correo = correo.trim();
+        
         String pass = new String(clave);
         
         if (funcion.login(correo, pass)){
