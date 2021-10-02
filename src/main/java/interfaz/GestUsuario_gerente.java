@@ -13,15 +13,12 @@ import java.awt.event.ActionListener;
  * @author Usuario
  */
 public class GestUsuario_gerente extends javax.swing.JFrame implements ActionListener{
-    RegistrarUsuario registrarUsuario = new RegistrarUsuario();
-    EliminarUsuario eliminarUsuario = new EliminarUsuario();
+
     /**
      * Creates new form gestionUsuario_gerente
      */
     public GestUsuario_gerente() {
-        
         initComponents();
-        jPanel2.add(registrarUsuario);
     }
 
     /**
@@ -88,7 +85,7 @@ public class GestUsuario_gerente extends javax.swing.JFrame implements ActionLis
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 500));
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
