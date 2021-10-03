@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-public class GestionUsuarioSecretaria extends javax.swing.JPanel {
+public class GestionUsuarioOperador extends javax.swing.JPanel {
     Funciones funciones = new Funciones();
     /**
      * Creates new form GestionUsuarioGerente
      */
-    public GestionUsuarioSecretaria() {
+    public GestionUsuarioOperador() {
         initComponents();
     }
 
@@ -272,9 +272,9 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
                     .addComponent(jLabel45))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator76, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel46)
                 .addGap(11, 11, 11)
                 .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
