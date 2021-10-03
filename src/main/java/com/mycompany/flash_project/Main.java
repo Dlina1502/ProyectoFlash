@@ -7,6 +7,7 @@ package com.mycompany.flash_project;
 
 
 import conexion_y_funciones.*;
+import interfaz.JFrame_gerente;
 import interfaz.JFrame_operador;
 import interfaz.JFrame_inicio;
 import interfaz.JFrame_secretaria;
@@ -36,7 +37,7 @@ public class Main {
         
         
         //new JFrame_inicio().setVisible(true);
-        new JFrame_secretaria().setVisible(true);
+        new JFrame_gerente().setVisible(true);
     }
 
     
