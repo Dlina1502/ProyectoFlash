@@ -4,18 +4,33 @@
  * and open the template in the editor.
  */
 package interfaz;
-
+import conexion_y_funciones.Funciones;
+import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Usuario
  */
 public class GestionUsuarioGerente extends javax.swing.JPanel {
-
+    Funciones funciones = new Funciones();
+    DefaultTableModel model;
     /**
      * Creates new form GestionUsuarioGerente
      */
     public GestionUsuarioGerente() {
         initComponents();
+        //inicializa con las sedes
+        funciones.consultar_sedes_combo(jComboBox13);
+        funciones.consultar_sedes_combo(jComboBox15);
+        
+        
+        //inicializa con los roles
+        funciones.consultar_roles_combo(jComboBox14);
+        funciones.consultar_roles_combo(jComboBox16);
     }
 
     /**
@@ -67,8 +82,8 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jSeparator72 = new javax.swing.JSeparator();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
@@ -111,8 +126,6 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
 
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/agregarUs.png"))); // NOI18N
 
-        jSeparator61.setBackground(new java.awt.Color(0, 0, 0));
-
         jTextField37.setForeground(new java.awt.Color(153, 153, 153));
         jTextField37.setText("Documento de identificación");
         jTextField37.setBorder(null);
@@ -122,8 +135,6 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                 jTextField37MouseClicked(evt);
             }
         });
-
-        jSeparator62.setBackground(new java.awt.Color(0, 0, 0));
 
         jTextField38.setForeground(new java.awt.Color(153, 153, 153));
         jTextField38.setText("Nombre");
@@ -135,34 +146,43 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
             }
         });
 
-        jSeparator63.setBackground(new java.awt.Color(0, 0, 0));
-
         jTextField39.setForeground(new java.awt.Color(153, 153, 153));
         jTextField39.setText("Segundo apellido");
         jTextField39.setBorder(null);
         jTextField39.setPreferredSize(new java.awt.Dimension(7, 24));
+        jTextField39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField39MouseClicked(evt);
+            }
+        });
 
         jTextField40.setForeground(new java.awt.Color(153, 153, 153));
         jTextField40.setText("Primer apellido");
         jTextField40.setBorder(null);
         jTextField40.setPreferredSize(new java.awt.Dimension(7, 24));
+        jTextField40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField40MouseClicked(evt);
+            }
+        });
         jTextField40.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField40jTextField4ActionPerformed(evt);
             }
         });
 
-        jSeparator64.setBackground(new java.awt.Color(0, 0, 0));
-
         jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel38.setText("Datos personales:");
-
-        jSeparator65.setBackground(new java.awt.Color(0, 0, 0));
 
         jTextField41.setForeground(new java.awt.Color(153, 153, 153));
         jTextField41.setText("Teléfono");
         jTextField41.setBorder(null);
         jTextField41.setPreferredSize(new java.awt.Dimension(7, 24));
+        jTextField41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField41MouseClicked(evt);
+            }
+        });
         jTextField41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField41jTextField5ActionPerformed(evt);
@@ -172,15 +192,14 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jLabel39.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel39.setText("Datos empleado:");
 
-        jSeparator66.setBackground(new java.awt.Color(0, 0, 0));
-
-        jSeparator67.setBackground(new java.awt.Color(0, 0, 0));
-
         jComboBox13.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione sede donde labora", " " }));
+        jComboBox13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox13ActionPerformed(evt);
+            }
+        });
 
         jComboBox14.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione rol en la empresa", " " }));
 
         jLabel40.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel40.setText("Crear cuenta:");
@@ -189,13 +208,16 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField42.setText("Correo");
         jTextField42.setBorder(null);
         jTextField42.setPreferredSize(new java.awt.Dimension(7, 24));
+        jTextField42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField42MouseClicked(evt);
+            }
+        });
         jTextField42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField42jTextField6ActionPerformed(evt);
             }
         });
-
-        jSeparator68.setBackground(new java.awt.Color(0, 0, 0));
 
         jPasswordField13.setText("jPasswordField1");
         jPasswordField13.setBorder(null);
@@ -207,13 +229,9 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
             }
         });
 
-        jSeparator69.setBackground(new java.awt.Color(0, 0, 0));
-
         jLabel41.setText("Contraseña:");
 
         jLabel42.setText("Comfirmar contraseña:");
-
-        jSeparator70.setBackground(new java.awt.Color(0, 0, 0));
 
         jPasswordField14.setText("jPasswordField1");
         jPasswordField14.setBorder(null);
@@ -226,6 +244,11 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         });
 
         jButton10.setText("REGISTRAR");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -266,7 +289,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jSeparator67)
                         .addComponent(jSeparator66)
-                        .addComponent(jComboBox13, 0, 172, Short.MAX_VALUE)
+                        .addComponent(jComboBox13, 0, 0, Short.MAX_VALUE)
                         .addComponent(jComboBox14, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -368,29 +391,81 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("del usuario que desea consultar:");
 
-        jSeparator71.setBackground(new java.awt.Color(0, 0, 0));
-
         jTextField43.setForeground(new java.awt.Color(153, 153, 153));
         jTextField43.setText("Documento de identificación");
         jTextField43.setBorder(null);
         jTextField43.setPreferredSize(new java.awt.Dimension(7, 24));
 
-        jSeparator72.setBackground(new java.awt.Color(0, 0, 0));
-
         jButton11.setText("CONSULTAR");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
 
         jButton12.setText("VER BASE DE DATOS");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(7);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Documento", "Title 2", "Title 3", "Title 4", "null", "null", "null", "null", "null", "null"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("Documento");
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Title 2");
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Title 3");
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Title 4");
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("null");
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setHeaderValue("null");
+            jTable1.getColumnModel().getColumn(6).setResizable(false);
+            jTable1.getColumnModel().getColumn(6).setHeaderValue("null");
+            jTable1.getColumnModel().getColumn(7).setResizable(false);
+            jTable1.getColumnModel().getColumn(7).setHeaderValue("null");
+            jTable1.getColumnModel().getColumn(8).setResizable(false);
+            jTable1.getColumnModel().getColumn(8).setHeaderValue("null");
+            jTable1.getColumnModel().getColumn(9).setResizable(false);
+            jTable1.getColumnModel().getColumn(9).setHeaderValue("null");
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 102, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -402,20 +477,17 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                         .addComponent(jLabel1)
                         .addGap(91, 91, 91))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(154, 154, 154))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel43)
-                                .addGap(192, 192, 192))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68))))
+                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(154, 154, 154))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel43)
+                            .addGap(192, 192, 192)))))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,8 +507,8 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                .addGap(27, 27, 27))
         );
 
         jPanel4.add(jPanel1);
@@ -456,14 +528,10 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField45.setBorder(null);
         jTextField45.setPreferredSize(new java.awt.Dimension(7, 24));
 
-        jSeparator75.setBackground(new java.awt.Color(0, 0, 0));
-
         jTextField46.setForeground(new java.awt.Color(153, 153, 153));
         jTextField46.setText("Documento de identificación");
         jTextField46.setBorder(null);
         jTextField46.setPreferredSize(new java.awt.Dimension(7, 24));
-
-        jSeparator76.setBackground(new java.awt.Color(0, 0, 0));
 
         jTextField47.setForeground(new java.awt.Color(153, 153, 153));
         jTextField47.setText("Primer apellido");
@@ -471,18 +539,14 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField47.setPreferredSize(new java.awt.Dimension(7, 24));
         jTextField47.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField47jTextField4ActionPerformed(evt);
+                jTextField47ActionPerformed(evt);
             }
         });
-
-        jSeparator77.setBackground(new java.awt.Color(0, 0, 0));
 
         jTextField48.setForeground(new java.awt.Color(153, 153, 153));
         jTextField48.setText("Segundo apellido");
         jTextField48.setBorder(null);
         jTextField48.setPreferredSize(new java.awt.Dimension(7, 24));
-
-        jSeparator78.setBackground(new java.awt.Color(0, 0, 0));
 
         jTextField49.setForeground(new java.awt.Color(153, 153, 153));
         jTextField49.setText("Teléfono");
@@ -490,21 +554,18 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField49.setPreferredSize(new java.awt.Dimension(7, 24));
         jTextField49.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField49jTextField5ActionPerformed(evt);
+                jTextField49ActionPerformed(evt);
             }
         });
 
-        jSeparator79.setBackground(new java.awt.Color(0, 0, 0));
-
         jComboBox15.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione sede donde labora", " " }));
-
-        jSeparator80.setBackground(new java.awt.Color(0, 0, 0));
+        jComboBox15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox15ActionPerformed(evt);
+            }
+        });
 
         jComboBox16.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione rol en la empresa", " " }));
-
-        jSeparator81.setBackground(new java.awt.Color(0, 0, 0));
 
         jTextField50.setForeground(new java.awt.Color(153, 153, 153));
         jTextField50.setText("Correo");
@@ -512,13 +573,16 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jTextField50.setPreferredSize(new java.awt.Dimension(7, 24));
         jTextField50.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField50jTextField6ActionPerformed(evt);
+                jTextField50ActionPerformed(evt);
             }
         });
 
-        jSeparator82.setBackground(new java.awt.Color(0, 0, 0));
-
         jButton14.setText("MOSTRAR DATOS");
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -526,6 +590,11 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         });
 
         jButton15.setText("GUARDAR CAMBIOS");
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
 
         jButton16.setText("CAMBIAR CONTRASEÑA");
         jButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -557,7 +626,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                                 .addComponent(jSeparator81)
                                 .addComponent(jSeparator80)
                                 .addComponent(jComboBox16, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox15, 0, 172, Short.MAX_VALUE))
+                                .addComponent(jComboBox15, 0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextField45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator75, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
@@ -625,7 +694,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                 .addComponent(jSeparator81, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("EDITAR USUARIO", jPanel5);
@@ -643,14 +712,10 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("del usuario que desea inactivar:");
 
-        jSeparator73.setBackground(new java.awt.Color(0, 0, 0));
-
         jTextField44.setForeground(new java.awt.Color(153, 153, 153));
         jTextField44.setText("Documento de identificación");
         jTextField44.setBorder(null);
         jTextField44.setPreferredSize(new java.awt.Dimension(7, 24));
-
-        jSeparator74.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton13.setText("INACTIVAR");
 
@@ -742,37 +807,130 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
 
     private void jPasswordField14jPasswordField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField14jPasswordField2MouseClicked
         // TODO add your handling code here:
+        jPasswordField14.setText(null);
     }//GEN-LAST:event_jPasswordField14jPasswordField2MouseClicked
 
-    private void jTextField50jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField50jTextField6ActionPerformed
+    private void jComboBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox13ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField50jTextField6ActionPerformed
+    }//GEN-LAST:event_jComboBox13ActionPerformed
 
-    private void jTextField49jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField49jTextField5ActionPerformed
+    private void jTextField37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField37ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField49jTextField5ActionPerformed
+    }//GEN-LAST:event_jTextField37ActionPerformed
 
-    private void jTextField47jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField47jTextField4ActionPerformed
+    private void jTextField37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField37MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField47jTextField4ActionPerformed
+        jTextField37.setText(null);
+    }//GEN-LAST:event_jTextField37MouseClicked
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+    private void jTextField38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField38MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+        jTextField38.setText(null);
+    }//GEN-LAST:event_jTextField38MouseClicked
+
+    private void jTextField40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField40MouseClicked
+        // TODO add your handling code here:
+        jTextField40.setText(null);
+    }//GEN-LAST:event_jTextField40MouseClicked
+
+    private void jTextField39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField39MouseClicked
+        // TODO add your handling code here:
+        jTextField39.setText(null);
+    }//GEN-LAST:event_jTextField39MouseClicked
+
+    private void jTextField41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField41MouseClicked
+        // TODO add your handling code here:
+        jTextField41.setText(null);
+    }//GEN-LAST:event_jTextField41MouseClicked
+
+    private void jTextField42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField42MouseClicked
+        // TODO add your handling code here:
+        jTextField42.setText(null);
+    }//GEN-LAST:event_jTextField42MouseClicked
+
+    private void jComboBox14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox14ActionPerformed
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        String sede = (String) jComboBox13.getSelectedItem();
+        String rol = (String) jComboBox14.getSelectedItem();
+        String documento = jTextField37.getText();
+        String nombre = jTextField38.getText();
+        String apellido1 = jTextField40.getText();
+        String apellido2 = jTextField39.getText();
+        String telefono = jTextField41.getText();
+        String correo = jTextField42.getText();
+        char[] clave = jPasswordField13.getPassword();
+        char[] claveConfirm = jPasswordField14.getPassword();
+        
+        
+        String[] partsSede = sede.split("//");
+        String claveConv = new String(clave);
+        String claveConfirmConv = new String(claveConfirm);
+        
+        if (claveConv.equals(claveConfirmConv)){
+            funciones.registrarUsuario(documento, partsSede[0],partsSede[1],partsSede[2], rol, "activo", nombre, apellido1, apellido2, telefono, correo, claveConv);
+        }else{
+            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+        }
+        
+
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jTextField47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField47ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField47ActionPerformed
+
+    private void jTextField49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField49ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField49ActionPerformed
+
+    private void jTextField50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField50ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField50ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton16ActionPerformed
 
-    private void jTextField37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField37MouseClicked
-        String doc = jTextField37.getText();
-        if (doc.equals("Documento de identificación"))
-        jTextField37.setText("");
-    }//GEN-LAST:event_jTextField37MouseClicked
-
-    private void jTextField38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField38MouseClicked
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField38MouseClicked
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jComboBox15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox15ActionPerformed
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        // TODO add your handling code here:
+        
+        String documentoConsult = jTextField46.getText();
+        funciones.consultar_datos_usuario(documentoConsult, jTextField45, jTextField47, jTextField48, jTextField49, jTextField50, jComboBox15, jComboBox16);
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+      funciones.creartabla(jTable1);
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+      String documento = jTextField43.getText();
+      funciones.creartablausuario(jTable1, documento);
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        String documento = jTextField46.getText();
+        String nombre = jTextField45.getText();
+        String apellido1 = jTextField47.getText();
+        String apellido2 = jTextField48.getText();
+        String telefono = jTextField49.getText();
+        String correo = jTextField50.getText();
+        String sede = (String) jComboBox15.getSelectedItem();
+        String rol = (String) jComboBox16.getSelectedItem();
+        String[] partsSede = sede.split("//");
+        funciones.editarUsuario(documento, nombre, apellido1, apellido2, telefono, correo, partsSede[0],partsSede[1],partsSede[2], rol);
+    }//GEN-LAST:event_jButton15MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -810,7 +968,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPasswordField jPasswordField13;
     private javax.swing.JPasswordField jPasswordField14;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator61;
     private javax.swing.JSeparator jSeparator62;
     private javax.swing.JSeparator jSeparator63;
@@ -834,7 +992,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator81;
     private javax.swing.JSeparator jSeparator82;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField37;
     private javax.swing.JTextField jTextField38;
     private javax.swing.JTextField jTextField39;

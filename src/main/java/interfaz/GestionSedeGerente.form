@@ -241,6 +241,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="REGISTRAR"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton10MouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel47">
                   <Properties>
@@ -352,15 +355,16 @@
                                       <Component id="jButton11" min="-2" pref="36" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="jTextField43" min="-2" pref="23" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           <Component id="jSeparator72" min="-2" pref="7" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jTextField51" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           <Component id="jSeparator83" min="-2" max="-2" attributes="0"/>
