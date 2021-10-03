@@ -5,15 +5,17 @@
  */
 package interfaz;
 
-/**
- *
- * @author Usuario
- */
+    import conexion_y_funciones.Funciones;
+    import java.awt.event.ActionEvent;
+    import java.sql.Connection;
+    import java.sql.ResultSet;
+    import java.sql.Statement;
+    import javax.swing.JOptionPane;
+    import javax.swing.table.DefaultTableModel;
+
 public class GestionSedeGerente extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GestionSedeGerente
-     */
+    Funciones funciones = new Funciones();
     public GestionSedeGerente() {
         initComponents();
     }
@@ -132,6 +134,11 @@ public class GestionSedeGerente extends javax.swing.JPanel {
         jSeparator64.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton10.setText("REGISTRAR");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
 
         jLabel47.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel47.setText("Datos de la sede:");
@@ -625,6 +632,14 @@ public class GestionSedeGerente extends javax.swing.JPanel {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        String ciudad = jTextField37.getText();
+        String barrio = jTextField38.getText();
+        String direccion = jTextField40.getText();
+        String telefono = jTextField39.getText();
+        funciones.registrarSedes(TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY, WIDTH);
+    }//GEN-LAST:event_jButton10MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
