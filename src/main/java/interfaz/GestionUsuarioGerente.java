@@ -10,14 +10,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.PasswordView;
 /**
  *
  * @author Usuario
  */
 public class GestionUsuarioGerente extends javax.swing.JPanel {
     Funciones funciones = new Funciones();
-    DefaultTableModel model;
+    DefaultTableModel model;    
     /**
      * Creates new form GestionUsuarioGerente
      */
@@ -31,6 +33,9 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         //inicializa con los roles
         funciones.consultar_roles_combo(jComboBox14);
         funciones.consultar_roles_combo(jComboBox16);
+        
+        //Inicializa con los estados
+        funciones.consultar_estados_combo(jComboBox17);
     }
 
     /**
@@ -187,6 +192,11 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jLabel39.setText("Datos empleado:");
 
         jComboBox13.setForeground(new java.awt.Color(153, 153, 153));
+        jComboBox13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox13MouseClicked(evt);
+            }
+        });
         jComboBox13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox13ActionPerformed(evt);
@@ -404,54 +414,19 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Documento", "Title 2", "Title 3", "Title 4", "null", "null", "null", "null", "null", "null"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTable1.setModel(jTable1.getModel());
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
             jTable1.getColumnModel().getColumn(0).setHeaderValue("Documento");
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Title 2");
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Title 3");
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Title 4");
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setHeaderValue("null");
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setHeaderValue("null");
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setHeaderValue("null");
-            jTable1.getColumnModel().getColumn(7).setResizable(false);
-            jTable1.getColumnModel().getColumn(7).setHeaderValue("null");
-            jTable1.getColumnModel().getColumn(8).setResizable(false);
-            jTable1.getColumnModel().getColumn(8).setHeaderValue("null");
-            jTable1.getColumnModel().getColumn(9).setResizable(false);
-            jTable1.getColumnModel().getColumn(9).setHeaderValue("null");
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Apellido 1");
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Apellido 2");
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("Rol");
+            jTable1.getColumnModel().getColumn(5).setHeaderValue("Estado");
+            jTable1.getColumnModel().getColumn(6).setHeaderValue("Sede");
+            jTable1.getColumnModel().getColumn(7).setHeaderValue("Telefono");
+            jTable1.getColumnModel().getColumn(8).setHeaderValue("Correo");
+            jTable1.getColumnModel().getColumn(9).setHeaderValue("Clave");
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -469,17 +444,15 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                             .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39))
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(63, 63, 63))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel43)
-                                    .addGap(101, 101, 101))))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel43)
+                                .addGap(101, 101, 101)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -552,6 +525,11 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         });
 
         jComboBox15.setForeground(new java.awt.Color(153, 153, 153));
+        jComboBox15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox15MouseClicked(evt);
+            }
+        });
         jComboBox15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox15ActionPerformed(evt);
@@ -590,6 +568,11 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         });
 
         jButton16.setText("CAMBIAR CONTRASEÑA");
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton16MouseClicked(evt);
+            }
+        });
         jButton16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton16ActionPerformed(evt);
@@ -597,6 +580,8 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         });
 
         jComboBox17.setForeground(new java.awt.Color(153, 153, 153));
+        jComboBox17.setToolTipText("");
+        jComboBox17.setName(""); // NOI18N
         jComboBox17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox17ActionPerformed(evt);
@@ -714,6 +699,8 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
+
+        jComboBox17.getAccessibleContext().setAccessibleName("");
 
         jTabbedPane1.addTab("EDITAR USUARIO", jPanel5);
 
@@ -858,7 +845,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         String documentoConsult = jTextField46.getText();
-        funciones.consultar_datos_usuario(documentoConsult, jTextField45, jTextField47, jTextField48, jTextField49, jTextField50, jComboBox15, jComboBox16);
+        funciones.consultar_datos_usuario(documentoConsult, jTextField45, jTextField47, jTextField48, jTextField49, jTextField50, jComboBox15, jComboBox16, jComboBox17);
     }//GEN-LAST:event_jButton14MouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
@@ -879,13 +866,47 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         String correo = jTextField50.getText();
         String sede = (String) jComboBox15.getSelectedItem();
         String rol = (String) jComboBox16.getSelectedItem();
+        String estado = (String) jComboBox17.getSelectedItem();
         String[] partsSede = sede.split("//");
-        funciones.editarUsuario(documento, nombre, apellido1, apellido2, telefono, correo, partsSede[0],partsSede[1],partsSede[2], rol);
+        funciones.editarUsuario(documento, nombre, apellido1, apellido2, telefono, correo, partsSede[0],partsSede[1],partsSede[2], rol, estado);
     }//GEN-LAST:event_jButton15MouseClicked
 
     private void jComboBox17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox17ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox17ActionPerformed
+
+    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+        String documento = jTextField46.getText();
+        JPasswordField pf = new JPasswordField();
+        JPasswordField pf2 = new JPasswordField();
+        int opcion1 = JOptionPane.showConfirmDialog(null, pf, "Ingresa la contraseña actual", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (opcion1 == JOptionPane.OK_OPTION){
+        String password = new String(pf.getPassword());        
+        if((funciones.consultarContraseña(documento, password)).equals(password)){
+            int opcion2 = JOptionPane.showConfirmDialog(null, pf2, "Correcto. Ingresa la nueva contraseña", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (opcion2 == JOptionPane.OK_OPTION){
+                String newpassword = new String(pf2.getPassword());
+                if ((newpassword.equals(""))||(newpassword.equals(password))){
+                    JOptionPane.showMessageDialog(null, "La contraseña es la misma o esta vacia", "La contraseña no fue actualizada", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        funciones.editarContraseña(documento, newpassword);
+                    }                
+                }
+            }else{
+            JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+            }
+        }        
+    }//GEN-LAST:event_jButton16MouseClicked
+
+    private void jComboBox13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox13MouseClicked
+        jComboBox13.removeAllItems();
+        funciones.consultar_sedes_combo(jComboBox13);
+    }//GEN-LAST:event_jComboBox13MouseClicked
+
+    private void jComboBox15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox15MouseClicked
+        jComboBox15.removeAllItems();
+        funciones.consultar_sedes_combo(jComboBox15);
+    }//GEN-LAST:event_jComboBox15MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

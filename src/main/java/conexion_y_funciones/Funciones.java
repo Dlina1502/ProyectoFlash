@@ -82,34 +82,29 @@ public class Funciones extends Conexion{
 
     }
     
-    public void editarUsuario(String cedula, String nombre, String apellido1,
-            String apellido2, String telefono, String correo, String barrio, String direccion, String ciudad, String rol) {
+    public void editarUsuario(String cedula, String nombre, String apellido1, String apellido2, String telefono, 
+                              String correo, String barrio, String direccion, String ciudad, String rol, String estado) {
         try {
-            sql = "SELECT actualizar_usuario('"+cedula+"','"+nombre.toUpperCase()+"','" + apellido1.toUpperCase() + "','" + apellido2.toUpperCase() + "','" + telefono.toUpperCase() + "','" + correo.toUpperCase() + "','" + barrio.toUpperCase()+"','"+ direccion.toUpperCase() +"','"+ciudad.toUpperCase()+ "','" + rol.toUpperCase()+"')";
+            sql = "SELECT actualizar_usuario('"+cedula+"','"+nombre.toUpperCase()+"','" + apellido1.toUpperCase() + "','" + apellido2.toUpperCase() + "','" + telefono.toUpperCase() + "','" + correo.toUpperCase() + "','" + barrio.toUpperCase()+"','"+ direccion.toUpperCase() +"','"+ciudad.toUpperCase()+ "','" + rol.toUpperCase()+"','"+estado.toUpperCase()+"')";
             statement.executeQuery(sql);
             JOptionPane.showMessageDialog(null,"Usuario editado con éxito");
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
         }
-
-
     }
     //funcion para crear sedes
-    public boolean registrarSedes(String barrio, String direccion, int id_ciudad) {
+    public void registrarSedes(String barrio, String direccion, String ciudad, String telefono) {
 
         try {
 
-            sql = "SELECT registrarSede ('" + barrio.toUpperCase() + "','" + direccion + "','" + id_ciudad + "')";
+            sql = "SELECT registrarSede ('" + barrio.toUpperCase() + "','" + direccion.toUpperCase() + "','" + ciudad.toUpperCase() + "','"+ telefono +"')";
             statement.executeQuery(sql);
-            System.out.println("sede registrada con exito");
-            return true;
+            JOptionPane.showMessageDialog(null, "sede registrada con exito");
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-
-        return false;
     }
     
     //funcion para consultar los datos de una persona
@@ -120,7 +115,8 @@ public class Funciones extends Conexion{
             javax.swing.JTextField jTextTelefono,
             javax.swing.JTextField jTextCorreo,
             javax.swing.JComboBox<String> jcomboSede,
-            javax.swing.JComboBox<String> jcomborol){
+            javax.swing.JComboBox<String> jcomborol,
+            javax.swing.JComboBox<String> jcomboestado){
         try {
             sql = "select * from consulta_usuario('"+documento+"')";
             PreparedStatement statementAux = conexion.prepareStatement(sql);
@@ -131,7 +127,7 @@ public class Funciones extends Conexion{
                 jTextApellido2.setText(resultSet.getString(7));
                 jTextTelefono.setText(resultSet.getString(8));
                 jTextCorreo.setText(resultSet.getString(9));
-                
+                jcomboestado.setSelectedItem(resultSet.getString(4));
                 jcomboSede.setSelectedItem(resultSet.getString(2));
                 jcomborol.setSelectedItem(resultSet.getString(3));
             }
@@ -165,7 +161,7 @@ public class Funciones extends Conexion{
             sql = "select concat_ws('//',sedes.barrio,sedes.direccion,ciudad_sede.ciudad)  \n" +
 "                   from sedes inner join ciudad_sede on sedes.id_ciudad = ciudad_sede.id_ciudad";
             resultSet = statement.executeQuery(sql);
-            jcombobox.addItem("Seccione sede donde labora");
+            jcombobox.addItem("Seccione sede");
             while (resultSet.next()) {
                 jcombobox.addItem(resultSet.getString(1));
             }
@@ -185,9 +181,29 @@ public class Funciones extends Conexion{
             sql = "select tipo_rol from rol_empleados";
             resultSet = statement.executeQuery(sql);
               
-            jcombobox.addItem("Seleccione rol en la empresa");
+            jcombobox.addItem("Seleccione rol");
             while (resultSet.next()) {
                 jcombobox.addItem(resultSet.getString("tipo_rol"));
+            }
+            
+            
+        }
+        catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+        
+    }
+    
+    public void consultar_estados_combo(javax.swing.JComboBox<String> jcombobox){
+        
+        
+        try{
+            sql = "SELECT tipo_estado FROM estado_empleado";
+            resultSet = statement.executeQuery(sql);
+              
+            jcombobox.addItem("Seleccione un estado");
+            while (resultSet.next()) {
+                jcombobox.addItem(resultSet.getString("tipo_estado"));
             }
             
             
@@ -268,4 +284,178 @@ public class Funciones extends Conexion{
         }        
     }
     
+    public String consultarContraseña(String documento, String password){        
+        String a="";
+        try{
+        sql = "SELECT clave FROM informacion_empleados WHERE documento_empleado = '"+documento+"'";
+        resultSet = statement.executeQuery(sql);
+        
+        if (resultSet.next()){
+            a=resultSet.getString("clave");
+            return a;
+        }
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return a;
+    }
+    
+    public void editarContraseña(String documento, String password){        
+        try{
+            sql = "UPDATE informacion_empleados SET clave = '"+password+"' WHERE documento_empleado = '"+documento+"'";
+            statement.executeQuery(sql);
+            JOptionPane.showMessageDialog(null, "Contraseña editada con éxito");        
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Contraseña editada con éxito");
+        }
+    }
+    
+    public void creartablasede(javax.swing.JTable jTable){
+        DefaultTableModel model;
+        String[] titulos = {"Barrio", "Direccion", "ciudad", "Telefono"};
+        String[] registros = new String[50];
+        sql = "SELECT * FROM consultar_sedes()";
+        model = new DefaultTableModel(null, titulos);
+        try {
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+
+                registros[0] = resultSet.getString(1);
+                registros[1] = resultSet.getString(2);
+                registros[2] = resultSet.getString(3);
+                registros[3] = resultSet.getString(4);
+                model.addRow(registros);
+                
+            }            
+            jTable.setModel(model);
+            jTable.setAutoResizeMode(jTable.AUTO_RESIZE_OFF);
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(175);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(175);
+            jTable.getColumnModel().getColumn(2).setPreferredWidth(175);
+            jTable.getColumnModel().getColumn(3).setPreferredWidth(175);
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+        }        
+    }
+    
+    public void creartablasedebarrio(javax.swing.JTable jTable, String barrio){
+        DefaultTableModel model;
+        String[] titulos = {"Barrio", "Direccion", "ciudad", "Telefono"};
+        String[] registros = new String[50];
+        sql = "SELECT * FROM consultar_sedes_barrio('"+barrio+"')";
+        model = new DefaultTableModel(null, titulos);
+        try {
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+
+                registros[0] = resultSet.getString(1);
+                registros[1] = resultSet.getString(2);
+                registros[2] = resultSet.getString(3);
+                registros[3] = resultSet.getString(4);
+                model.addRow(registros);
+                
+            }            
+            jTable.setModel(model);
+            jTable.setAutoResizeMode(jTable.AUTO_RESIZE_OFF);
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(175);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(175);
+            jTable.getColumnModel().getColumn(2).setPreferredWidth(175);
+            jTable.getColumnModel().getColumn(3).setPreferredWidth(175);
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+        }        
+    }
+    
+    public void creartablasedeciudad(javax.swing.JTable jTable, String ciudad){
+        DefaultTableModel model;
+        String[] titulos = {"Barrio", "Direccion", "ciudad", "Telefono"};
+        String[] registros = new String[50];
+        sql = "SELECT * FROM consultar_sedes_ciudad('"+ciudad+"')";
+        model = new DefaultTableModel(null, titulos);
+        try {
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+
+                registros[0] = resultSet.getString(1);
+                registros[1] = resultSet.getString(2);
+                registros[2] = resultSet.getString(3);
+                registros[3] = resultSet.getString(4);
+                model.addRow(registros);
+                
+            }            
+            jTable.setModel(model);
+            jTable.setAutoResizeMode(jTable.AUTO_RESIZE_OFF);
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(175);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(175);
+            jTable.getColumnModel().getColumn(2).setPreferredWidth(175);
+            jTable.getColumnModel().getColumn(3).setPreferredWidth(175);
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+        }        
+    }
+    
+    public void editarSede(String barrieE, String direccionE, String ciudadE, String barrio, String direccion, String ciudad, String telefono) {
+        try {
+            sql = "SELECT * FROM consultar_datos_sede('"+barrieE+"','"+direccionE+"','"+ciudadE+"')";
+            resultSet = statement.executeQuery(sql);
+            int id_sede = 0;
+            while (resultSet.next()){
+                id_sede = resultSet.getInt(1);
+            }
+            sql = "SELECT actualizar_sedes("+id_sede+",'"+barrio.toUpperCase()+"','"+direccion.toUpperCase()+"','"+ciudad.toUpperCase()+"','"+telefono+"')";
+            statement.executeQuery(sql);
+            JOptionPane.showMessageDialog(null,"Sede editada con éxito");
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void consultarSede(String barrio, String direccion, String ciudad, 
+            javax.swing.JTextField jTextBarrio, javax.swing.JTextField jTextDireccion, 
+            javax.swing.JTextField jTextCiudad, javax.swing.JTextField jTextTelefono){
+        try {
+            sql = "SELECT * FROM consultar_datos_sede('"+barrio+"','"+direccion+"','"+ciudad+"')";
+            resultSet = statement.executeQuery(sql);
+            while(resultSet.next()){                
+                jTextBarrio.setText(resultSet.getString(2));
+                jTextDireccion.setText(resultSet.getString(3));
+                jTextCiudad.setText(resultSet.getString(4));
+                jTextTelefono.setText(resultSet.getString(5));
+            }
+            JOptionPane.showMessageDialog(null,"Sede consultada");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"No se pudo consultar la sede");
+        }
+    }
+    
+    public void eliminarsede(String barrieE, String direccionE, String ciudadE){
+        try{
+            sql = "SELECT * FROM consultar_datos_sede('"+barrieE+"','"+direccionE+"','"+ciudadE+"')";
+            resultSet = statement.executeQuery(sql);
+            int id_sede = 0;
+            while (resultSet.next()){
+                id_sede = resultSet.getInt(1);
+            }
+            int a = JOptionPane.YES_NO_OPTION;
+            int b = JOptionPane.showConfirmDialog(null, "Esta seguro de eliminar esta sede?\nTodos los datos relacionados con ella se eliminaran.", "Eliminar sede", a);
+            if (b == 0){
+                sql = "SELECT eliminar_sede("+id_sede+")";
+                statement.executeQuery(sql);
+                JOptionPane.showMessageDialog(null, "La sede se ha eliminado");
+            }else{
+                JOptionPane.showMessageDialog(null, "La operacion se ha cancelado");
+            }                   
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error en el proceso, no se ha elimnado nada");
+        }
+    }
 }
