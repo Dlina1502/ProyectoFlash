@@ -15,11 +15,15 @@ import javax.swing.JPanel;
  * @author Usuario
  */
 public class JFrame_operador extends javax.swing.JFrame {
+    GestionUsuarioOperador gestionUsuario = new GestionUsuarioOperador();
+    GestionSedeOperador gestionSede = new GestionSedeOperador();
+    TerminalDeVentas venta = new TerminalDeVentas();
     /**
      * Creates new form JFrame_gerente
      */
     public JFrame_operador() {
         initComponents();
+        jPanel7.add(gestionUsuario);
     }
 
     /**
@@ -72,7 +76,17 @@ public class JFrame_operador extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("REPORTES");
+        jButton4.setText("TERMINAL DE VENTAS");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,7 +105,7 @@ public class JFrame_operador extends javax.swing.JFrame {
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -103,11 +117,11 @@ public class JFrame_operador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -116,11 +130,14 @@ public class JFrame_operador extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        //gestionSede.setVisible(false);
-        //jPanel7.remove(gestionSede);
+        gestionSede.setVisible(false);
+        jPanel7.remove(gestionSede);
+        
+        venta.setVisible(false);
+        jPanel7.remove(venta);
 
-        //jPanel7.add(gestionUsuario);
-        //gestionUsuario.setVisible(true);
+        jPanel7.add(gestionUsuario);
+        gestionUsuario.setVisible(true);
 
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -130,12 +147,31 @@ public class JFrame_operador extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        //gestionUsuario.setVisible(false);
-        //jPanel7.remove(gestionUsuario);
+        gestionUsuario.setVisible(false);
+        jPanel7.remove(gestionUsuario);
+        
+        venta.setVisible(false);
+        jPanel7.remove(venta);
 
-        //jPanel7.add(gestionSede);
-        //gestionSede.setVisible(true);
+        jPanel7.add(gestionSede);
+        gestionSede.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        gestionUsuario.setVisible(false);
+        jPanel7.remove(gestionUsuario);
+        
+        gestionSede.setVisible(false);
+        jPanel7.remove(gestionSede);
+        
+        jPanel7.add(venta);
+        venta.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
