@@ -100,23 +100,23 @@
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField38" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="campo_nombre" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jSeparator62" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField37" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="campo_documentoId" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jSeparator61" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField39" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="campo_segundoApellido" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jSeparator63" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField40" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="campo_primerApellido" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jSeparator64" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField41" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="campo_telefono" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jSeparator65" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
@@ -128,7 +128,7 @@
                           </Group>
                           <EmptySpace pref="51" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextField42" alignment="0" max="32767" attributes="0"/>
+                              <Component id="campo_correo" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPasswordField13" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
                               <Component id="jSeparator69" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
                               <Component id="jLabel41" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -161,18 +161,18 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextField37" min="-2" pref="23" max="-2" attributes="0"/>
+                                          <Component id="campo_documentoId" min="-2" pref="23" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           <Component id="jSeparator61" min="-2" pref="7" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextField42" min="-2" pref="23" max="-2" attributes="0"/>
+                                          <Component id="campo_correo" min="-2" pref="23" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           <Component id="jSeparator68" min="-2" pref="7" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField38" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="campo_nombre" min="-2" pref="23" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="jSeparator62" min="-2" pref="7" max="-2" attributes="0"/>
                               </Group>
@@ -181,7 +181,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jTextField40" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="campo_primerApellido" min="-2" pref="23" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="jSeparator64" min="-2" pref="7" max="-2" attributes="0"/>
                               </Group>
@@ -193,7 +193,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField39" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="campo_segundoApellido" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                               <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -201,7 +201,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jSeparator63" min="-2" pref="7" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField41" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="campo_telefono" min="-2" pref="23" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPasswordField14" min="-2" pref="23" max="-2" attributes="0"/>
@@ -241,7 +241,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator61">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField37">
+                <Component class="javax.swing.JTextField" name="campo_documentoId">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
@@ -255,12 +255,13 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextField37MouseClicked"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_documentoIdFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_documentoIdFocusLost"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator62">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField38">
+                <Component class="javax.swing.JTextField" name="campo_nombre">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
@@ -274,12 +275,13 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextField38MouseClicked"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_nombreFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_nombreFocusLost"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator63">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField39">
+                <Component class="javax.swing.JTextField" name="campo_segundoApellido">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
@@ -293,10 +295,11 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextField39MouseClicked"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_segundoApellidoFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_segundoApellidoFocusLost"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField40">
+                <Component class="javax.swing.JTextField" name="campo_primerApellido">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
@@ -310,8 +313,9 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextField40MouseClicked"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField40jTextField4ActionPerformed"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_primerApellidoFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_primerApellidoFocusLost"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_primerApellidojTextField4ActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator64">
@@ -326,7 +330,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator65">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField41">
+                <Component class="javax.swing.JTextField" name="campo_telefono">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
@@ -340,8 +344,9 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextField41MouseClicked"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField41jTextField5ActionPerformed"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_telefonoFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_telefonoFocusLost"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_telefonojTextField5ActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel39">
@@ -394,7 +399,7 @@
                     <Property name="text" type="java.lang.String" value="Crear cuenta:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField42">
+                <Component class="javax.swing.JTextField" name="campo_correo">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
@@ -408,8 +413,9 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextField42MouseClicked"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField42jTextField6ActionPerformed"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_correoFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campo_correoFocusLost"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campo_correojTextField6ActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator68">
@@ -511,7 +517,7 @@
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jSeparator72" alignment="1" max="32767" attributes="0"/>
                                       <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jTextField43" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
+                                      <Component id="buscar_documentoId" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               </Group>
@@ -544,7 +550,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField43" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="buscar_documentoId" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jSeparator72" min="-2" pref="7" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -584,7 +590,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator71">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField43">
+                <Component class="javax.swing.JTextField" name="buscar_documentoId">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="99" red="99" type="rgb"/>
@@ -597,6 +603,10 @@
                       <Dimension value="[7, 24]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="buscar_documentoIdFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="buscar_documentoIdFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator72">
                 </Component>
@@ -606,6 +616,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton11MouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton12">
@@ -663,7 +674,7 @@
                               <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField46" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="editar_documentoId" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jSeparator76" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -684,15 +695,15 @@
                                               <Component id="jComboBox15" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTextField45" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="editar_nombre" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator75" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField48" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="editar_segundoApellido" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator78" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField47" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="editar_primerApellido" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator77" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField49" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="editar_telefono" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator79" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField50" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="editar_correo" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator82" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -725,7 +736,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jTextField46" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="editar_documentoId" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -743,7 +754,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jTextField45" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="editar_nombre" min="-2" pref="23" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               <Component id="jSeparator75" min="-2" pref="7" max="-2" attributes="0"/>
                           </Group>
@@ -754,19 +765,19 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField47" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="editar_primerApellido" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="jSeparator77" min="-2" pref="7" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField48" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="editar_segundoApellido" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="jSeparator78" min="-2" pref="7" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField49" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="editar_telefono" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                       <Component id="jSeparator79" min="-2" pref="7" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField50" min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="editar_correo" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="jSeparator82" min="-2" pref="7" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -801,7 +812,7 @@
                 <Property name="text" type="java.lang.String" value="Datos personales:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField45">
+            <Component class="javax.swing.JTextField" name="editar_nombre">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
@@ -814,10 +825,14 @@
                   <Dimension value="[7, 24]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_nombreFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_nombreFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator75">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField46">
+            <Component class="javax.swing.JTextField" name="editar_documentoId">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
@@ -830,10 +845,14 @@
                   <Dimension value="[7, 24]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_documentoIdFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_documentoIdFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator76">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField47">
+            <Component class="javax.swing.JTextField" name="editar_primerApellido">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
@@ -847,12 +866,13 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField47ActionPerformed"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_primerApellidoFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_primerApellidoFocusLost"/>
               </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator77">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField48">
+            <Component class="javax.swing.JTextField" name="editar_segundoApellido">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
@@ -865,10 +885,14 @@
                   <Dimension value="[7, 24]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_segundoApellidoFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_segundoApellidoFocusLost"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator78">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField49">
+            <Component class="javax.swing.JTextField" name="editar_telefono">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
@@ -882,7 +906,9 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField49ActionPerformed"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_telefonoFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_telefonoFocusLost"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editar_telefonoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator79">
@@ -921,7 +947,7 @@
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator81">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField50">
+            <Component class="javax.swing.JTextField" name="editar_correo">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="99" type="rgb"/>
@@ -935,7 +961,9 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField50ActionPerformed"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_correoFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="editar_correoFocusLost"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editar_correoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator82">

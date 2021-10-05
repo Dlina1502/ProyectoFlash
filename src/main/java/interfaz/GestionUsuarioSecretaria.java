@@ -5,8 +5,11 @@
  */
 package interfaz;
 import conexion_y_funciones.Funciones;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 /**
  *
  * @author Usuario
@@ -16,6 +19,20 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
     /**
      * Creates new form GestionUsuarioGerente
      */
+    public void addPlaceholder(JTextField textField){
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.gray);
+    }
+    
+    public void removePlaceholder(JTextField textField){
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.black);
+    }
+    
     public GestionUsuarioSecretaria() {
         initComponents();
     }
@@ -36,30 +53,30 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
         jLabel43 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator71 = new javax.swing.JSeparator();
-        jTextField43 = new javax.swing.JTextField();
+        buscar_documentoId = new javax.swing.JTextField();
         jSeparator72 = new javax.swing.JSeparator();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jTextField45 = new javax.swing.JTextField();
+        campo_nombre = new javax.swing.JTextField();
         jSeparator75 = new javax.swing.JSeparator();
-        jTextField46 = new javax.swing.JTextField();
+        campo_documentoId = new javax.swing.JTextField();
         jSeparator76 = new javax.swing.JSeparator();
-        jTextField47 = new javax.swing.JTextField();
+        campo_primerApellido = new javax.swing.JTextField();
         jSeparator77 = new javax.swing.JSeparator();
-        jTextField48 = new javax.swing.JTextField();
+        campo_segundoApellido = new javax.swing.JTextField();
         jSeparator78 = new javax.swing.JSeparator();
-        jTextField49 = new javax.swing.JTextField();
+        campo_telefono = new javax.swing.JTextField();
         jSeparator79 = new javax.swing.JSeparator();
-        jComboBox15 = new javax.swing.JComboBox<>();
+        campo_sede = new javax.swing.JComboBox<>();
         jSeparator80 = new javax.swing.JSeparator();
-        jComboBox16 = new javax.swing.JComboBox<>();
+        campo_rol = new javax.swing.JComboBox<>();
         jSeparator81 = new javax.swing.JSeparator();
-        jTextField50 = new javax.swing.JTextField();
+        campo_correo = new javax.swing.JTextField();
         jSeparator82 = new javax.swing.JSeparator();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
@@ -81,18 +98,39 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("del usuario que desea consultar:");
 
-        jTextField43.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField43.setText("Documento de identificación");
-        jTextField43.setBorder(null);
-        jTextField43.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_documentoId.setForeground(new java.awt.Color(153, 153, 153));
+        buscar_documentoId.setText("Documento de identificación");
+        buscar_documentoId.setBorder(null);
+        buscar_documentoId.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_documentoId.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                buscar_documentoIdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscar_documentoIdFocusLost(evt);
+            }
+        });
 
         jButton11.setText("CONSULTAR");
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton11MouseClicked(evt);
+            }
+        });
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setText("VER BASE DE DATOS");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(7);
-        jScrollPane1.setViewportView(jTextArea1);
+        jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,26 +143,28 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jSeparator72)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(buscar_documentoId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(130, 130, 130))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(91, 91, 91))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(154, 154, 154))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel43)
-                                .addGap(192, 192, 192))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68))))
+                        .addGap(0, 146, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(154, 154, 154))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel43)
+                                    .addGap(192, 192, 192)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,7 +176,7 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscar_documentoId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator72, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -144,8 +184,8 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                .addGap(27, 27, 27))
         );
 
         jPanel4.add(jPanel1);
@@ -160,58 +200,116 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
         jLabel46.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel46.setText("Datos personales:");
 
-        jTextField45.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField45.setText("Nombre");
-        jTextField45.setBorder(null);
-        jTextField45.setPreferredSize(new java.awt.Dimension(7, 24));
-
-        jTextField46.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField46.setText("Documento de identificación");
-        jTextField46.setBorder(null);
-        jTextField46.setPreferredSize(new java.awt.Dimension(7, 24));
-
-        jTextField47.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField47.setText("Primer apellido");
-        jTextField47.setBorder(null);
-        jTextField47.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField47.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField47ActionPerformed(evt);
+        campo_nombre.setForeground(new java.awt.Color(153, 153, 153));
+        campo_nombre.setText("Nombre");
+        campo_nombre.setBorder(null);
+        campo_nombre.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_nombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_nombreFocusLost(evt);
             }
         });
 
-        jTextField48.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField48.setText("Segundo apellido");
-        jTextField48.setBorder(null);
-        jTextField48.setPreferredSize(new java.awt.Dimension(7, 24));
-
-        jTextField49.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField49.setText("Teléfono");
-        jTextField49.setBorder(null);
-        jTextField49.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField49.addActionListener(new java.awt.event.ActionListener() {
+        campo_documentoId.setForeground(new java.awt.Color(153, 153, 153));
+        campo_documentoId.setText("Documento de identificación");
+        campo_documentoId.setBorder(null);
+        campo_documentoId.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_documentoId.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_documentoIdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_documentoIdFocusLost(evt);
+            }
+        });
+        campo_documentoId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField49ActionPerformed(evt);
+                campo_documentoIdActionPerformed(evt);
             }
         });
 
-        jComboBox15.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox15.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione sede donde labora", " " }));
-
-        jComboBox16.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox16.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione rol en la empresa", " " }));
-
-        jTextField50.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField50.setText("Correo");
-        jTextField50.setBorder(null);
-        jTextField50.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField50.addActionListener(new java.awt.event.ActionListener() {
+        campo_primerApellido.setForeground(new java.awt.Color(153, 153, 153));
+        campo_primerApellido.setText("Primer apellido");
+        campo_primerApellido.setBorder(null);
+        campo_primerApellido.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_primerApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_primerApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_primerApellidoFocusLost(evt);
+            }
+        });
+        campo_primerApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField50ActionPerformed(evt);
+                campo_primerApellidoActionPerformed(evt);
+            }
+        });
+
+        campo_segundoApellido.setForeground(new java.awt.Color(153, 153, 153));
+        campo_segundoApellido.setText("Segundo apellido");
+        campo_segundoApellido.setBorder(null);
+        campo_segundoApellido.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_segundoApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_segundoApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_segundoApellidoFocusLost(evt);
+            }
+        });
+
+        campo_telefono.setForeground(new java.awt.Color(153, 153, 153));
+        campo_telefono.setText("Teléfono");
+        campo_telefono.setBorder(null);
+        campo_telefono.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_telefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_telefonoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_telefonoFocusLost(evt);
+            }
+        });
+        campo_telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_telefonoActionPerformed(evt);
+            }
+        });
+
+        campo_sede.setForeground(new java.awt.Color(153, 153, 153));
+        campo_sede.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione sede donde labora", " " }));
+
+        campo_rol.setForeground(new java.awt.Color(153, 153, 153));
+        campo_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione rol en la empresa", " " }));
+
+        campo_correo.setForeground(new java.awt.Color(153, 153, 153));
+        campo_correo.setText("Correo");
+        campo_correo.setBorder(null);
+        campo_correo.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_correo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_correoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_correoFocusLost(evt);
+            }
+        });
+        campo_correo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_correoActionPerformed(evt);
             }
         });
 
         jButton14.setText("MOSTRAR DATOS");
+        jButton14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton14MouseClicked(evt);
+            }
+        });
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -231,7 +329,7 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
                         .addComponent(jLabel45)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(campo_documentoId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator76, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
@@ -242,18 +340,18 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jSeparator81)
                                 .addComponent(jSeparator80)
-                                .addComponent(jComboBox16, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox15, 0, 0, Short.MAX_VALUE))
+                                .addComponent(campo_rol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campo_sede, 0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campo_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator75, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                .addComponent(jTextField48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campo_segundoApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator78, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                .addComponent(jTextField47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campo_primerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator77, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                .addComponent(jTextField49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campo_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator79, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                .addComponent(jTextField50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campo_correo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator82))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(218, 218, 218)
@@ -268,7 +366,7 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo_documentoId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel45))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator76, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,37 +375,39 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel46)
                 .addGap(11, 11, 11)
-                .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator75, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator77, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator78, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField49, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(jSeparator79, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator82, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_sede, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jSeparator80, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jSeparator81, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
         );
+
+        campo_documentoId.getAccessibleContext().setAccessibleName("");
 
         jTabbedPane1.addTab("EDITAR USUARIO", jPanel5);
 
@@ -350,26 +450,170 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void jTextField50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField50ActionPerformed
+    private void campo_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_correoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField50ActionPerformed
+    }//GEN-LAST:event_campo_correoActionPerformed
 
-    private void jTextField49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField49ActionPerformed
+    private void campo_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_telefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField49ActionPerformed
+    }//GEN-LAST:event_campo_telefonoActionPerformed
 
-    private void jTextField47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField47ActionPerformed
+    private void campo_primerApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_primerApellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField47ActionPerformed
+    }//GEN-LAST:event_campo_primerApellidoActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        // TODO add your handling code here:
+        String documento = buscar_documentoId.getText();
+        funciones.creartablausuario(jTable1, documento);
+    }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        // TODO add your handling code here:
+        funciones.creartabla(jTable1);
+    }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
+        // TODO add your handling code here:
+        String documentoConsult = campo_documentoId.getText();
+        funciones.consultar_datos_usuario_secretaria(documentoConsult, campo_nombre, campo_primerApellido, campo_segundoApellido, campo_telefono, campo_correo, campo_sede, campo_rol);
+    }//GEN-LAST:event_jButton14MouseClicked
+
+    private void campo_documentoIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_documentoIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campo_documentoIdActionPerformed
+
+    private void campo_documentoIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_documentoIdFocusGained
+        if(campo_documentoId.getText().equals("Documento de identificación")){
+            campo_documentoId.setText(null);
+            campo_documentoId.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_documentoId);
+        }
+    }//GEN-LAST:event_campo_documentoIdFocusGained
+
+    private void campo_documentoIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_documentoIdFocusLost
+        if(campo_documentoId.getText().length() == 0){
+            addPlaceholder(campo_documentoId);
+            campo_documentoId.setText("Documento de identificación");
+        }
+    }//GEN-LAST:event_campo_documentoIdFocusLost
+
+    private void campo_nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_nombreFocusGained
+        if(campo_nombre.getText().equals("Nombre")){
+            campo_nombre.setText(null);
+            campo_nombre.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_nombre);
+        }
+    }//GEN-LAST:event_campo_nombreFocusGained
+
+    private void campo_nombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_nombreFocusLost
+        if(campo_nombre.getText().length() == 0){
+            addPlaceholder(campo_nombre);
+            campo_nombre.setText("Nombre");
+        }
+    }//GEN-LAST:event_campo_nombreFocusLost
+
+    private void campo_primerApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_primerApellidoFocusGained
+        if(campo_primerApellido.getText().equals("Primer apellido")){
+            campo_primerApellido.setText(null);
+            campo_primerApellido.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_primerApellido);
+        }
+    }//GEN-LAST:event_campo_primerApellidoFocusGained
+
+    private void campo_primerApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_primerApellidoFocusLost
+        if(campo_primerApellido.getText().length() == 0){
+            addPlaceholder(campo_primerApellido);
+            campo_primerApellido.setText("Primer apellido");
+        }
+    }//GEN-LAST:event_campo_primerApellidoFocusLost
+
+    private void campo_segundoApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_segundoApellidoFocusGained
+        if(campo_segundoApellido.getText().equals("Segundo apellido")){
+            campo_segundoApellido.setText(null);
+            campo_segundoApellido.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_segundoApellido);
+        }
+    }//GEN-LAST:event_campo_segundoApellidoFocusGained
+
+    private void campo_segundoApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_segundoApellidoFocusLost
+        if(campo_segundoApellido.getText().length() == 0){
+            addPlaceholder(campo_segundoApellido);
+            campo_segundoApellido.setText("Segundo apellido");
+        }
+    }//GEN-LAST:event_campo_segundoApellidoFocusLost
+
+    private void campo_telefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_telefonoFocusGained
+        if(campo_telefono.getText().equals("Teléfono")){
+            campo_telefono.setText(null);
+            campo_telefono.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_telefono);
+        }
+    }//GEN-LAST:event_campo_telefonoFocusGained
+
+    private void campo_telefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_telefonoFocusLost
+        if(campo_telefono.getText().length() == 0){
+            addPlaceholder(campo_telefono);
+            campo_telefono.setText("Teléfono");
+        }
+    }//GEN-LAST:event_campo_telefonoFocusLost
+
+    private void campo_correoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_correoFocusGained
+        if(campo_correo.getText().equals("Correo")){
+            campo_correo.setText(null);
+            campo_correo.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_correo);
+        }
+    }//GEN-LAST:event_campo_correoFocusGained
+
+    private void campo_correoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_correoFocusLost
+        if(campo_correo.getText().length() == 0){
+            addPlaceholder(campo_correo);
+            campo_correo.setText("Correo");
+        }
+    }//GEN-LAST:event_campo_correoFocusLost
+
+    private void buscar_documentoIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_documentoIdFocusGained
+        if(buscar_documentoId.getText().equals("Documento de identificación")){
+            buscar_documentoId.setText(null);
+            buscar_documentoId.requestFocus();
+            // quitar place holder
+            removePlaceholder(buscar_documentoId);
+        }
+    }//GEN-LAST:event_buscar_documentoIdFocusGained
+
+    private void buscar_documentoIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_documentoIdFocusLost
+        if(buscar_documentoId.getText().length() == 0){
+            addPlaceholder(buscar_documentoId);
+            buscar_documentoId.setText("Documento de identificación");
+        }
+    }//GEN-LAST:event_buscar_documentoIdFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField buscar_documentoId;
+    private javax.swing.JTextField campo_correo;
+    private javax.swing.JTextField campo_documentoId;
+    private javax.swing.JTextField campo_nombre;
+    private javax.swing.JTextField campo_primerApellido;
+    private javax.swing.JComboBox<String> campo_rol;
+    private javax.swing.JComboBox<String> campo_sede;
+    private javax.swing.JTextField campo_segundoApellido;
+    private javax.swing.JTextField campo_telefono;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
-    private javax.swing.JComboBox<String> jComboBox15;
-    private javax.swing.JComboBox<String> jComboBox16;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel43;
@@ -378,7 +622,7 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator71;
     private javax.swing.JSeparator jSeparator72;
     private javax.swing.JSeparator jSeparator75;
@@ -390,13 +634,6 @@ public class GestionUsuarioSecretaria extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator81;
     private javax.swing.JSeparator jSeparator82;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
-    private javax.swing.JTextField jTextField49;
-    private javax.swing.JTextField jTextField50;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

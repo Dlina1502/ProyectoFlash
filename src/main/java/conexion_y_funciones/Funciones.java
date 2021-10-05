@@ -138,6 +138,36 @@ public class Funciones extends Conexion{
         }
         
     }
+    
+    //funcion para consultar datos que puede editar secretaria 
+    public void consultar_datos_usuario_secretaria(String documento,
+            javax.swing.JTextField jTextNombre,
+            javax.swing.JTextField jTextApellido1,
+            javax.swing.JTextField jTextApellido2,
+            javax.swing.JTextField jTextTelefono,
+            javax.swing.JTextField jTextCorreo,
+            javax.swing.JComboBox<String> jcomboSede,
+            javax.swing.JComboBox<String> jcomborol){
+        try {
+            sql = "select * from consulta_usuario('"+documento+"')";
+            PreparedStatement statementAux = conexion.prepareStatement(sql);
+            resultSet = statement.executeQuery(sql);
+            while(resultSet.next()){
+                jTextNombre.setText(resultSet.getString(5));
+                jTextApellido1.setText(resultSet.getString(6));
+                jTextApellido2.setText(resultSet.getString(7));
+                jTextTelefono.setText(resultSet.getString(8));
+                jTextCorreo.setText(resultSet.getString(9));
+                jcomboSede.setSelectedItem(resultSet.getString(2));
+                jcomborol.setSelectedItem(resultSet.getString(3));
+            }
+            JOptionPane.showMessageDialog(null,"Usuario consultado");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"No se pudo consultar el usuario");
+        }
+        
+    }
 
     //funcion para registrar ciudades
     public boolean registrarCiudad(String ciudad) {

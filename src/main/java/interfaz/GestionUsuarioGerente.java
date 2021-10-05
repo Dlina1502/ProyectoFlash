@@ -5,12 +5,15 @@
  */
 package interfaz;
 import conexion_y_funciones.Funciones;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.PasswordView;
 /**
@@ -23,6 +26,21 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
     /**
      * Creates new form GestionUsuarioGerente
      */
+    
+    public void addPlaceholder(JTextField textField){
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.gray);
+    }
+    
+    public void removePlaceholder(JTextField textField){
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.black);
+    }
+    
     public GestionUsuarioGerente() {
         initComponents();
         //inicializa con las sedes
@@ -36,6 +54,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         
         //Inicializa con los estados
         funciones.consultar_estados_combo(jComboBox17);
+        
     }
 
     /**
@@ -52,23 +71,23 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jSeparator61 = new javax.swing.JSeparator();
-        jTextField37 = new javax.swing.JTextField();
+        campo_documentoId = new javax.swing.JTextField();
         jSeparator62 = new javax.swing.JSeparator();
-        jTextField38 = new javax.swing.JTextField();
+        campo_nombre = new javax.swing.JTextField();
         jSeparator63 = new javax.swing.JSeparator();
-        jTextField39 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
+        campo_segundoApellido = new javax.swing.JTextField();
+        campo_primerApellido = new javax.swing.JTextField();
         jSeparator64 = new javax.swing.JSeparator();
         jLabel38 = new javax.swing.JLabel();
         jSeparator65 = new javax.swing.JSeparator();
-        jTextField41 = new javax.swing.JTextField();
+        campo_telefono = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         jSeparator66 = new javax.swing.JSeparator();
         jSeparator67 = new javax.swing.JSeparator();
         jComboBox13 = new javax.swing.JComboBox<>();
         jComboBox14 = new javax.swing.JComboBox<>();
         jLabel40 = new javax.swing.JLabel();
-        jTextField42 = new javax.swing.JTextField();
+        campo_correo = new javax.swing.JTextField();
         jSeparator68 = new javax.swing.JSeparator();
         jPasswordField13 = new javax.swing.JPasswordField();
         jSeparator69 = new javax.swing.JSeparator();
@@ -83,7 +102,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jLabel43 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator71 = new javax.swing.JSeparator();
-        jTextField43 = new javax.swing.JTextField();
+        buscar_documentoId = new javax.swing.JTextField();
         jSeparator72 = new javax.swing.JSeparator();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
@@ -92,21 +111,21 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jTextField45 = new javax.swing.JTextField();
+        editar_nombre = new javax.swing.JTextField();
         jSeparator75 = new javax.swing.JSeparator();
-        jTextField46 = new javax.swing.JTextField();
+        editar_documentoId = new javax.swing.JTextField();
         jSeparator76 = new javax.swing.JSeparator();
-        jTextField47 = new javax.swing.JTextField();
+        editar_primerApellido = new javax.swing.JTextField();
         jSeparator77 = new javax.swing.JSeparator();
-        jTextField48 = new javax.swing.JTextField();
+        editar_segundoApellido = new javax.swing.JTextField();
         jSeparator78 = new javax.swing.JSeparator();
-        jTextField49 = new javax.swing.JTextField();
+        editar_telefono = new javax.swing.JTextField();
         jSeparator79 = new javax.swing.JSeparator();
         jComboBox15 = new javax.swing.JComboBox<>();
         jSeparator80 = new javax.swing.JSeparator();
         jComboBox16 = new javax.swing.JComboBox<>();
         jSeparator81 = new javax.swing.JSeparator();
-        jTextField50 = new javax.swing.JTextField();
+        editar_correo = new javax.swing.JTextField();
         jSeparator82 = new javax.swing.JSeparator();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
@@ -125,66 +144,81 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
 
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/agregarUs.png"))); // NOI18N
 
-        jTextField37.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField37.setText("Documento de identificación");
-        jTextField37.setBorder(null);
-        jTextField37.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField37.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField37MouseClicked(evt);
+        campo_documentoId.setForeground(new java.awt.Color(153, 153, 153));
+        campo_documentoId.setText("Documento de identificación");
+        campo_documentoId.setBorder(null);
+        campo_documentoId.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_documentoId.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_documentoIdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_documentoIdFocusLost(evt);
             }
         });
 
-        jTextField38.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField38.setText("Nombre");
-        jTextField38.setBorder(null);
-        jTextField38.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField38.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField38MouseClicked(evt);
+        campo_nombre.setForeground(new java.awt.Color(153, 153, 153));
+        campo_nombre.setText("Nombre");
+        campo_nombre.setBorder(null);
+        campo_nombre.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_nombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_nombreFocusLost(evt);
             }
         });
 
-        jTextField39.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField39.setText("Segundo apellido");
-        jTextField39.setBorder(null);
-        jTextField39.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField39.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField39MouseClicked(evt);
+        campo_segundoApellido.setForeground(new java.awt.Color(153, 153, 153));
+        campo_segundoApellido.setText("Segundo apellido");
+        campo_segundoApellido.setBorder(null);
+        campo_segundoApellido.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_segundoApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_segundoApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_segundoApellidoFocusLost(evt);
             }
         });
 
-        jTextField40.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField40.setText("Primer apellido");
-        jTextField40.setBorder(null);
-        jTextField40.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField40.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField40MouseClicked(evt);
+        campo_primerApellido.setForeground(new java.awt.Color(153, 153, 153));
+        campo_primerApellido.setText("Primer apellido");
+        campo_primerApellido.setBorder(null);
+        campo_primerApellido.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_primerApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_primerApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_primerApellidoFocusLost(evt);
             }
         });
-        jTextField40.addActionListener(new java.awt.event.ActionListener() {
+        campo_primerApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField40jTextField4ActionPerformed(evt);
+                campo_primerApellidojTextField4ActionPerformed(evt);
             }
         });
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel38.setText("Datos personales:");
 
-        jTextField41.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField41.setText("Teléfono");
-        jTextField41.setBorder(null);
-        jTextField41.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField41.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField41MouseClicked(evt);
+        campo_telefono.setForeground(new java.awt.Color(153, 153, 153));
+        campo_telefono.setText("Teléfono");
+        campo_telefono.setBorder(null);
+        campo_telefono.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_telefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_telefonoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_telefonoFocusLost(evt);
             }
         });
-        jTextField41.addActionListener(new java.awt.event.ActionListener() {
+        campo_telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField41jTextField5ActionPerformed(evt);
+                campo_telefonojTextField5ActionPerformed(evt);
             }
         });
 
@@ -208,18 +242,21 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jLabel40.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel40.setText("Crear cuenta:");
 
-        jTextField42.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField42.setText("Correo");
-        jTextField42.setBorder(null);
-        jTextField42.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField42.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField42MouseClicked(evt);
+        campo_correo.setForeground(new java.awt.Color(153, 153, 153));
+        campo_correo.setText("Correo");
+        campo_correo.setBorder(null);
+        campo_correo.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_correo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_correoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_correoFocusLost(evt);
             }
         });
-        jTextField42.addActionListener(new java.awt.event.ActionListener() {
+        campo_correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField42jTextField6ActionPerformed(evt);
+                campo_correojTextField6ActionPerformed(evt);
             }
         });
 
@@ -276,19 +313,19 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                 .addGap(67, 67, 67)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(campo_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator62, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(campo_documentoId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator61, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(campo_segundoApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator63, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(campo_primerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator64, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(campo_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator65, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jSeparator67)
@@ -297,7 +334,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                         .addComponent(jComboBox14, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campo_correo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPasswordField13, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator69, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel41)
@@ -324,22 +361,22 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campo_documentoId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator61, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(campo_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator68, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campo_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator62, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel41))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campo_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator64, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
@@ -348,14 +385,14 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                         .addComponent(jSeparator69, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campo_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel42))
                 .addGap(0, 0, 0)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jSeparator63, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campo_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jPasswordField14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -395,15 +432,28 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("del usuario que desea consultar:");
 
-        jTextField43.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField43.setText("Documento de identificación");
-        jTextField43.setBorder(null);
-        jTextField43.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_documentoId.setForeground(new java.awt.Color(153, 153, 153));
+        buscar_documentoId.setText("Documento de identificación");
+        buscar_documentoId.setBorder(null);
+        buscar_documentoId.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_documentoId.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                buscar_documentoIdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscar_documentoIdFocusLost(evt);
+            }
+        });
 
         jButton11.setText("CONSULTAR");
         jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton11MouseClicked(evt);
+            }
+        });
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
             }
         });
 
@@ -429,7 +479,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jSeparator72)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buscar_documentoId, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(39, 39, 39))
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,7 +503,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscar_documentoId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator72, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -477,38 +527,73 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         jLabel46.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel46.setText("Datos personales:");
 
-        jTextField45.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField45.setText("Nombre");
-        jTextField45.setBorder(null);
-        jTextField45.setPreferredSize(new java.awt.Dimension(7, 24));
-
-        jTextField46.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField46.setText("Documento de identificación");
-        jTextField46.setBorder(null);
-        jTextField46.setPreferredSize(new java.awt.Dimension(7, 24));
-
-        jTextField47.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField47.setText("Primer apellido");
-        jTextField47.setBorder(null);
-        jTextField47.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField47.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField47ActionPerformed(evt);
+        editar_nombre.setForeground(new java.awt.Color(153, 153, 153));
+        editar_nombre.setText("Nombre");
+        editar_nombre.setBorder(null);
+        editar_nombre.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                editar_nombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                editar_nombreFocusLost(evt);
             }
         });
 
-        jTextField48.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField48.setText("Segundo apellido");
-        jTextField48.setBorder(null);
-        jTextField48.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_documentoId.setForeground(new java.awt.Color(153, 153, 153));
+        editar_documentoId.setText("Documento de identificación");
+        editar_documentoId.setBorder(null);
+        editar_documentoId.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_documentoId.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                editar_documentoIdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                editar_documentoIdFocusLost(evt);
+            }
+        });
 
-        jTextField49.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField49.setText("Teléfono");
-        jTextField49.setBorder(null);
-        jTextField49.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField49.addActionListener(new java.awt.event.ActionListener() {
+        editar_primerApellido.setForeground(new java.awt.Color(153, 153, 153));
+        editar_primerApellido.setText("Primer apellido");
+        editar_primerApellido.setBorder(null);
+        editar_primerApellido.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_primerApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                editar_primerApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                editar_primerApellidoFocusLost(evt);
+            }
+        });
+
+        editar_segundoApellido.setForeground(new java.awt.Color(153, 153, 153));
+        editar_segundoApellido.setText("Segundo apellido");
+        editar_segundoApellido.setBorder(null);
+        editar_segundoApellido.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_segundoApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                editar_segundoApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                editar_segundoApellidoFocusLost(evt);
+            }
+        });
+
+        editar_telefono.setForeground(new java.awt.Color(153, 153, 153));
+        editar_telefono.setText("Teléfono");
+        editar_telefono.setBorder(null);
+        editar_telefono.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_telefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                editar_telefonoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                editar_telefonoFocusLost(evt);
+            }
+        });
+        editar_telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField49ActionPerformed(evt);
+                editar_telefonoActionPerformed(evt);
             }
         });
 
@@ -526,13 +611,21 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
 
         jComboBox16.setForeground(new java.awt.Color(153, 153, 153));
 
-        jTextField50.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField50.setText("Correo");
-        jTextField50.setBorder(null);
-        jTextField50.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField50.addActionListener(new java.awt.event.ActionListener() {
+        editar_correo.setForeground(new java.awt.Color(153, 153, 153));
+        editar_correo.setText("Correo");
+        editar_correo.setBorder(null);
+        editar_correo.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_correo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                editar_correoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                editar_correoFocusLost(evt);
+            }
+        });
+        editar_correo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField50ActionPerformed(evt);
+                editar_correoActionPerformed(evt);
             }
         });
 
@@ -590,7 +683,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                         .addComponent(jLabel45)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editar_documentoId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator76, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(218, 218, 218)
@@ -607,15 +700,15 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                                         .addComponent(jComboBox16, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jComboBox15, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(editar_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jSeparator75)
-                                        .addComponent(jTextField48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(editar_segundoApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jSeparator78)
-                                        .addComponent(jTextField47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(editar_primerApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jSeparator77)
-                                        .addComponent(jTextField49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(editar_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jSeparator79)
-                                        .addComponent(jTextField50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(editar_correo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jSeparator82, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jLabel46))
                         .addGap(69, 69, 69)
@@ -637,7 +730,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editar_documentoId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel45))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator76, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -652,7 +745,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(editar_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator75, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -660,19 +753,19 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
                         .addGap(1, 1, 1)
                         .addComponent(jSeparator83, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editar_primerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator77, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editar_segundoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator78, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField49, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editar_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(jSeparator79, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editar_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator82, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -714,17 +807,17 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField40jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField40jTextField4ActionPerformed
+    private void campo_primerApellidojTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_primerApellidojTextField4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField40jTextField4ActionPerformed
+    }//GEN-LAST:event_campo_primerApellidojTextField4ActionPerformed
 
-    private void jTextField41jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField41jTextField5ActionPerformed
+    private void campo_telefonojTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_telefonojTextField5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField41jTextField5ActionPerformed
+    }//GEN-LAST:event_campo_telefonojTextField5ActionPerformed
 
-    private void jTextField42jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField42jTextField6ActionPerformed
+    private void campo_correojTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_correojTextField6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField42jTextField6ActionPerformed
+    }//GEN-LAST:event_campo_correojTextField6ActionPerformed
 
     private void jPasswordField13jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField13jPasswordField1MouseClicked
         // TODO add your handling code here:
@@ -744,36 +837,6 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField37ActionPerformed
 
-    private void jTextField37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField37MouseClicked
-        // TODO add your handling code here:
-        jTextField37.setText(null);
-    }//GEN-LAST:event_jTextField37MouseClicked
-
-    private void jTextField38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField38MouseClicked
-        // TODO add your handling code here:
-        jTextField38.setText(null);
-    }//GEN-LAST:event_jTextField38MouseClicked
-
-    private void jTextField40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField40MouseClicked
-        // TODO add your handling code here:
-        jTextField40.setText(null);
-    }//GEN-LAST:event_jTextField40MouseClicked
-
-    private void jTextField39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField39MouseClicked
-        // TODO add your handling code here:
-        jTextField39.setText(null);
-    }//GEN-LAST:event_jTextField39MouseClicked
-
-    private void jTextField41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField41MouseClicked
-        // TODO add your handling code here:
-        jTextField41.setText(null);
-    }//GEN-LAST:event_jTextField41MouseClicked
-
-    private void jTextField42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField42MouseClicked
-        // TODO add your handling code here:
-        jTextField42.setText(null);
-    }//GEN-LAST:event_jTextField42MouseClicked
-
     private void jComboBox14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox14ActionPerformed
@@ -782,12 +845,12 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         // TODO add your handling code here:
         String sede = (String) jComboBox13.getSelectedItem();
         String rol = (String) jComboBox14.getSelectedItem();
-        String documento = jTextField37.getText();
-        String nombre = jTextField38.getText();
-        String apellido1 = jTextField40.getText();
-        String apellido2 = jTextField39.getText();
-        String telefono = jTextField41.getText();
-        String correo = jTextField42.getText();
+        String documento = campo_documentoId.getText();
+        String nombre = campo_nombre.getText();
+        String apellido1 = campo_primerApellido.getText();
+        String apellido2 = campo_segundoApellido.getText();
+        String telefono = campo_telefono.getText();
+        String correo = campo_correo.getText();
         char[] clave = jPasswordField13.getPassword();
         char[] claveConfirm = jPasswordField14.getPassword();
         
@@ -805,17 +868,13 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton10MouseClicked
 
-    private void jTextField47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField47ActionPerformed
+    private void editar_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_telefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField47ActionPerformed
+    }//GEN-LAST:event_editar_telefonoActionPerformed
 
-    private void jTextField49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField49ActionPerformed
+    private void editar_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_correoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField49ActionPerformed
-
-    private void jTextField50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField50ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField50ActionPerformed
+    }//GEN-LAST:event_editar_correoActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
@@ -832,8 +891,8 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
     private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
         // TODO add your handling code here:
         
-        String documentoConsult = jTextField46.getText();
-        funciones.consultar_datos_usuario(documentoConsult, jTextField45, jTextField47, jTextField48, jTextField49, jTextField50, jComboBox15, jComboBox16, jComboBox17);
+        String documentoConsult = editar_documentoId.getText();
+        funciones.consultar_datos_usuario(documentoConsult, editar_nombre, editar_primerApellido, editar_segundoApellido, editar_telefono, editar_correo, jComboBox15, jComboBox16, jComboBox17);
     }//GEN-LAST:event_jButton14MouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
@@ -841,17 +900,17 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton12MouseClicked
 
     private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
-      String documento = jTextField43.getText();
+      String documento = buscar_documentoId.getText();
       funciones.creartablausuario(jTable1, documento);
     }//GEN-LAST:event_jButton11MouseClicked
 
     private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
-        String documento = jTextField46.getText();
-        String nombre = jTextField45.getText();
-        String apellido1 = jTextField47.getText();
-        String apellido2 = jTextField48.getText();
-        String telefono = jTextField49.getText();
-        String correo = jTextField50.getText();
+        String documento = editar_documentoId.getText();
+        String nombre = editar_nombre.getText();
+        String apellido1 = editar_primerApellido.getText();
+        String apellido2 = editar_segundoApellido.getText();
+        String telefono = editar_telefono.getText();
+        String correo = editar_correo.getText();
         String sede = (String) jComboBox15.getSelectedItem();
         String rol = (String) jComboBox16.getSelectedItem();
         String estado = (String) jComboBox17.getSelectedItem();
@@ -864,7 +923,7 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox17ActionPerformed
 
     private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
-        String documento = jTextField46.getText();
+        String documento = editar_documentoId.getText();
         JPasswordField pf = new JPasswordField();
         JPasswordField pf2 = new JPasswordField();
         int opcion1 = JOptionPane.showConfirmDialog(null, pf, "Ingresa la contraseña actual", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
@@ -896,8 +955,233 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
         funciones.consultar_sedes_combo(jComboBox15);
     }//GEN-LAST:event_jComboBox15MouseClicked
 
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void campo_documentoIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_documentoIdFocusGained
+         if(campo_documentoId.getText().equals("Documento de identificación")){
+            campo_documentoId.setText(null);
+            campo_documentoId.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_documentoId);
+        }
+    }//GEN-LAST:event_campo_documentoIdFocusGained
+
+    private void campo_documentoIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_documentoIdFocusLost
+        if(campo_documentoId.getText().length() == 0){
+            addPlaceholder(campo_documentoId);
+            campo_documentoId.setText("Documento de identificación");
+        }
+    }//GEN-LAST:event_campo_documentoIdFocusLost
+
+    private void campo_nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_nombreFocusGained
+        if(campo_nombre.getText().equals("Nombre")){
+            campo_nombre.setText(null);
+            campo_nombre.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_nombre);
+        }
+    }//GEN-LAST:event_campo_nombreFocusGained
+
+    private void campo_nombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_nombreFocusLost
+        if(campo_nombre.getText().length() == 0){
+            addPlaceholder(campo_nombre);
+            campo_nombre.setText("Nombre");
+        }
+    }//GEN-LAST:event_campo_nombreFocusLost
+
+    private void campo_primerApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_primerApellidoFocusGained
+        if(campo_primerApellido.getText().equals("Primer apellido")){
+            campo_primerApellido.setText(null);
+            campo_primerApellido.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_primerApellido);
+        }
+    }//GEN-LAST:event_campo_primerApellidoFocusGained
+
+    private void campo_primerApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_primerApellidoFocusLost
+        if(campo_primerApellido.getText().length() == 0){
+            addPlaceholder(campo_primerApellido);
+            campo_primerApellido.setText("Primer apellido");
+        }
+    }//GEN-LAST:event_campo_primerApellidoFocusLost
+
+    private void campo_segundoApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_segundoApellidoFocusGained
+        if(campo_segundoApellido.getText().equals("Segundo apellido")){
+            campo_segundoApellido.setText(null);
+            campo_segundoApellido.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_segundoApellido);
+        }
+    }//GEN-LAST:event_campo_segundoApellidoFocusGained
+
+    private void campo_segundoApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_segundoApellidoFocusLost
+        if(campo_segundoApellido.getText().length() == 0){
+            addPlaceholder(campo_segundoApellido);
+            campo_segundoApellido.setText("Segundo apellido");
+        }
+    }//GEN-LAST:event_campo_segundoApellidoFocusLost
+
+    private void campo_telefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_telefonoFocusGained
+        if(campo_telefono.getText().equals("Teléfono")){
+            campo_telefono.setText(null);
+            campo_telefono.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_telefono);
+        }
+    }//GEN-LAST:event_campo_telefonoFocusGained
+
+    private void campo_telefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_telefonoFocusLost
+        if(campo_telefono.getText().length() == 0){
+            addPlaceholder(campo_telefono);
+            campo_telefono.setText("Teléfono");
+        }
+    }//GEN-LAST:event_campo_telefonoFocusLost
+
+    private void campo_correoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_correoFocusGained
+        if(campo_correo.getText().equals("Correo")){
+            campo_correo.setText(null);
+            campo_correo.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_correo);
+        }
+    }//GEN-LAST:event_campo_correoFocusGained
+
+    private void campo_correoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_correoFocusLost
+        if(campo_correo.getText().length() == 0){
+            addPlaceholder(campo_correo);
+            campo_correo.setText("Correo");
+        }
+    }//GEN-LAST:event_campo_correoFocusLost
+
+    private void buscar_documentoIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_documentoIdFocusGained
+        if(buscar_documentoId.getText().equals("Documento de identificación")){
+            buscar_documentoId.setText(null);
+            buscar_documentoId.requestFocus();
+            // quitar place holder
+            removePlaceholder(buscar_documentoId);
+        }
+    }//GEN-LAST:event_buscar_documentoIdFocusGained
+
+    private void buscar_documentoIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_documentoIdFocusLost
+        if(buscar_documentoId.getText().length() == 0){
+            addPlaceholder(buscar_documentoId);
+            buscar_documentoId.setText("Documento de identificación");
+        }
+    }//GEN-LAST:event_buscar_documentoIdFocusLost
+
+    private void editar_documentoIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_documentoIdFocusGained
+        if(editar_documentoId.getText().equals("Documento de identificación")){
+            editar_documentoId.setText(null);
+            editar_documentoId.requestFocus();
+            // quitar place holder
+            removePlaceholder(editar_documentoId);
+        }
+    }//GEN-LAST:event_editar_documentoIdFocusGained
+
+    private void editar_documentoIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_documentoIdFocusLost
+        if(editar_documentoId.getText().length() == 0){
+            addPlaceholder(editar_documentoId);
+            editar_documentoId.setText("Documento de identificación");
+        }
+    }//GEN-LAST:event_editar_documentoIdFocusLost
+
+    private void editar_nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_nombreFocusGained
+        if(editar_nombre.getText().equals("Nombre")){
+            editar_nombre.setText(null);
+            editar_nombre.requestFocus();
+            // quitar place holder
+            removePlaceholder(editar_nombre);
+        }
+    }//GEN-LAST:event_editar_nombreFocusGained
+
+    private void editar_nombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_nombreFocusLost
+        if(editar_nombre.getText().length() == 0){
+            addPlaceholder(editar_nombre);
+            editar_nombre.setText("Nombre");
+        }
+    }//GEN-LAST:event_editar_nombreFocusLost
+
+    private void editar_primerApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_primerApellidoFocusGained
+        if(editar_primerApellido.getText().equals("Primer apellido")){
+            editar_primerApellido.setText(null);
+            editar_primerApellido.requestFocus();
+            // quitar place holder
+            removePlaceholder(editar_primerApellido);
+        }
+    }//GEN-LAST:event_editar_primerApellidoFocusGained
+
+    private void editar_primerApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_primerApellidoFocusLost
+        if(editar_primerApellido.getText().length() == 0){
+            addPlaceholder(editar_primerApellido);
+            editar_primerApellido.setText("Primer apellido");
+        }
+    }//GEN-LAST:event_editar_primerApellidoFocusLost
+
+    private void editar_segundoApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_segundoApellidoFocusGained
+        if(editar_segundoApellido.getText().equals("Segundo apellido")){
+            editar_segundoApellido.setText(null);
+            editar_segundoApellido.requestFocus();
+            // quitar place holder
+            removePlaceholder(editar_segundoApellido);
+        }
+    }//GEN-LAST:event_editar_segundoApellidoFocusGained
+
+    private void editar_segundoApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_segundoApellidoFocusLost
+        if(editar_segundoApellido.getText().length() == 0){
+            addPlaceholder(editar_segundoApellido);
+            editar_segundoApellido.setText("Segundo apellido");
+        }
+    }//GEN-LAST:event_editar_segundoApellidoFocusLost
+
+    private void editar_telefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_telefonoFocusGained
+        if(editar_telefono.getText().equals("Teléfono")){
+            editar_telefono.setText(null);
+            editar_telefono.requestFocus();
+            // quitar place holder
+            removePlaceholder(editar_telefono);
+        }
+    }//GEN-LAST:event_editar_telefonoFocusGained
+
+    private void editar_telefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_telefonoFocusLost
+        if(editar_telefono.getText().length() == 0){
+            addPlaceholder(editar_telefono);
+            editar_telefono.setText("Teléfono");
+        }
+    }//GEN-LAST:event_editar_telefonoFocusLost
+
+    private void editar_correoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_correoFocusGained
+        if(editar_correo.getText().equals("Correo")){
+            editar_correo.setText(null);
+            editar_correo.requestFocus();
+            // quitar place holder
+            removePlaceholder(editar_correo);
+        }
+    }//GEN-LAST:event_editar_correoFocusGained
+
+    private void editar_correoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_correoFocusLost
+        if(editar_correo.getText().length() == 0){
+            addPlaceholder(editar_correo);
+            editar_correo.setText("Correo");
+        }
+    }//GEN-LAST:event_editar_correoFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField buscar_documentoId;
+    private javax.swing.JTextField campo_correo;
+    private javax.swing.JTextField campo_documentoId;
+    private javax.swing.JTextField campo_nombre;
+    private javax.swing.JTextField campo_primerApellido;
+    private javax.swing.JTextField campo_segundoApellido;
+    private javax.swing.JTextField campo_telefono;
+    private javax.swing.JTextField editar_correo;
+    private javax.swing.JTextField editar_documentoId;
+    private javax.swing.JTextField editar_nombre;
+    private javax.swing.JTextField editar_primerApellido;
+    private javax.swing.JTextField editar_segundoApellido;
+    private javax.swing.JTextField editar_telefono;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -952,18 +1236,5 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator83;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
-    private javax.swing.JTextField jTextField49;
-    private javax.swing.JTextField jTextField50;
     // End of variables declaration//GEN-END:variables
 }

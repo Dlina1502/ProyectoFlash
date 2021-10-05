@@ -42,7 +42,7 @@ public class JFrame_operador extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("GERENTE");
+        setTitle("OPERADOR");
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
@@ -124,6 +124,10 @@ public class JFrame_operador extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jPanel7.getAccessibleContext().setAccessibleName("");
+
+        getAccessibleContext().setAccessibleName("OPERADOR");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

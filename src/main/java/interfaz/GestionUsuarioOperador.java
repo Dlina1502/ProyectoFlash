@@ -5,8 +5,11 @@
  */
 package interfaz;
 import conexion_y_funciones.Funciones;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 /**
  *
  * @author Usuario
@@ -16,6 +19,21 @@ public class GestionUsuarioOperador extends javax.swing.JPanel {
     /**
      * Creates new form GestionUsuarioGerente
      */
+    
+    public void addPlaceholder(JTextField textField){
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.gray);
+    }
+    
+    public void removePlaceholder(JTextField textField){
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.black);
+    }
+    
     public GestionUsuarioOperador() {
         initComponents();
     }
@@ -36,7 +54,7 @@ public class GestionUsuarioOperador extends javax.swing.JPanel {
         jLabel43 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator71 = new javax.swing.JSeparator();
-        jTextField43 = new javax.swing.JTextField();
+        campo_documentoId = new javax.swing.JTextField();
         jSeparator72 = new javax.swing.JSeparator();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
@@ -60,10 +78,18 @@ public class GestionUsuarioOperador extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("del usuario que desea consultar:");
 
-        jTextField43.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField43.setText("Documento de identificación");
-        jTextField43.setBorder(null);
-        jTextField43.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_documentoId.setForeground(new java.awt.Color(153, 153, 153));
+        campo_documentoId.setText("Documento de identificación");
+        campo_documentoId.setBorder(null);
+        campo_documentoId.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_documentoId.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_documentoIdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_documentoIdFocusLost(evt);
+            }
+        });
 
         jButton11.setText("CONSULTAR");
         jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,7 +129,7 @@ public class GestionUsuarioOperador extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jSeparator72)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(campo_documentoId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(130, 130, 130))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -134,7 +160,7 @@ public class GestionUsuarioOperador extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_documentoId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator72, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -190,12 +216,29 @@ public class GestionUsuarioOperador extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton12MouseClicked
 
     private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
-        String documento = jTextField43.getText();
+        String documento = campo_documentoId.getText();
         funciones.creartablausuarioO(jTable1, documento);
     }//GEN-LAST:event_jButton11MouseClicked
 
+    private void campo_documentoIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_documentoIdFocusGained
+        if(campo_documentoId.getText().equals("Documento de identificación")){
+            campo_documentoId.setText(null);
+            campo_documentoId.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_documentoId);
+        }
+    }//GEN-LAST:event_campo_documentoIdFocusGained
+
+    private void campo_documentoIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_documentoIdFocusLost
+        if(campo_documentoId.getText().length() == 0){
+            addPlaceholder(campo_documentoId);
+            campo_documentoId.setText("Documento de identificación");
+        }
+    }//GEN-LAST:event_campo_documentoIdFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField campo_documentoId;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JLabel jLabel1;
@@ -208,6 +251,5 @@ public class GestionUsuarioOperador extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator72;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField43;
     // End of variables declaration//GEN-END:variables
 }
