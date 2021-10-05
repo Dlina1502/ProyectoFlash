@@ -37,7 +37,7 @@ public class Main {
         
         
         //new JFrame_inicio().setVisible(true);
-        new JFrame_inicio().setVisible(true);
+        new JFrame_secretaria().setVisible(true);
     }
 
     

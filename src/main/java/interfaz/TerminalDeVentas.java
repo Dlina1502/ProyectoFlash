@@ -585,7 +585,13 @@ public class TerminalDeVentas extends javax.swing.JPanel {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         String documentoR = jTextField37.getText();
-        
+        String nombreR = jTextField38.getText();
+        String apellidoR = jTextField39.getText();
+        String telefonoR = jTextField46.getText();
+        String documentoD = jTextField42.getText();
+        String nombreD = jTextField41.getText();
+        String apellidoD = jTextField40.getText();
+        String telefonoD = jTextField47.getText();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox2MouseClicked

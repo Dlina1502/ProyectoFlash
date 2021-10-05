@@ -672,51 +672,52 @@
                               <Component id="jButton15" min="-2" pref="152" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="jButton14" min="-2" pref="152" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <Component id="jButton16" min="-2" pref="180" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jComboBox17" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jSeparator81" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jSeparator80" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jComboBox16" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jComboBox15" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="jSeparator81" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jSeparator80" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jComboBox16" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jComboBox15" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="jTextField45" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jSeparator75" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jTextField48" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jSeparator78" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jTextField47" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jSeparator77" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jTextField49" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jSeparator79" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jTextField50" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jSeparator82" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                           </Group>
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTextField45" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jSeparator75" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField48" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jSeparator78" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField47" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jSeparator77" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField49" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jSeparator79" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField50" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jSeparator82" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel47" max="32767" attributes="0"/>
+                                          <Component id="jSeparator83" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jSeparator83" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jComboBox17" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace pref="60" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                      <Component id="jButton14" min="-2" pref="152" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton16" min="-2" pref="152" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -740,18 +741,14 @@
                           <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextField45" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="jComboBox17" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jTextField45" min="-2" pref="23" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="jSeparator75" min="-2" pref="7" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jComboBox17" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                              <Component id="jSeparator83" min="-2" pref="7" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jSeparator75" min="-2" pref="7" max="-2" attributes="0"/>
+                          <Component id="jSeparator83" min="-2" pref="7" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTextField47" min="-2" pref="23" max="-2" attributes="0"/>
@@ -779,7 +776,7 @@
                       <Component id="jSeparator81" min="-2" pref="7" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="jButton15" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace pref="58" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

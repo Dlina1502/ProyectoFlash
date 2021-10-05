@@ -44,7 +44,7 @@ public class Funciones extends Conexion{
     public boolean login (String correo, String clave){
         try{
             correo = correo.trim();
-            sql = "select login ('"+correo+"','"+clave+"')";
+            sql = "select login ('"+correo.toUpperCase()+"','"+clave+"')";
             resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 rol = resultSet.getString(1);
@@ -93,6 +93,24 @@ public class Funciones extends Conexion{
             JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public void editarUsuarioS(String cedula, String nombre, String apellido1, String apellido2, String telefono, 
+                              String correo, String barrio, String direccion, String ciudad, String rol) {
+        String estado;
+        try {
+            sql = "SELECT estado_empleado.tipo_estado FROM informacion_empleados INNER JOIN estado_empleado ON informacion_empleados.id_estados = estado_empleado.id_estado WHERE informacion_empleados.documento_empleado = '"+cedula+"'";
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                estado = resultSet.getString(1);
+                sql = "SELECT actualizar_usuario('"+cedula+"','"+nombre.toUpperCase()+"','" + apellido1.toUpperCase() + "','" + apellido2.toUpperCase() + "','" + telefono.toUpperCase() + "','" + correo.toUpperCase() + "','" + barrio.toUpperCase()+"','"+ direccion.toUpperCase() +"','"+ciudad.toUpperCase()+ "','" + rol.toUpperCase()+"', '"+estado+"')";               
+            }
+            statement.executeQuery(sql);
+            JOptionPane.showMessageDialog(null,"Usuario editado con éxito");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     //funcion para crear sedes
     public void registrarSedes(String barrio, String direccion, String ciudad, String telefono) {
 
@@ -128,6 +146,35 @@ public class Funciones extends Conexion{
                 jTextTelefono.setText(resultSet.getString(8));
                 jTextCorreo.setText(resultSet.getString(9));
                 jcomboestado.setSelectedItem(resultSet.getString(4));
+                jcomboSede.setSelectedItem(resultSet.getString(2));
+                jcomborol.setSelectedItem(resultSet.getString(3));
+            }
+            JOptionPane.showMessageDialog(null,"Usuario consultado");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"No se pudo consultar el usuario");
+        }
+        
+    }
+    
+    public void consultar_datos_usuario_secretaria(String documento,
+            javax.swing.JTextField jTextNombre,
+            javax.swing.JTextField jTextApellido1,
+            javax.swing.JTextField jTextApellido2,
+            javax.swing.JTextField jTextTelefono,
+            javax.swing.JTextField jTextCorreo,
+            javax.swing.JComboBox<String> jcomboSede,
+            javax.swing.JComboBox<String> jcomborol){
+        try {
+            sql = "select * from consulta_usuario('"+documento+"')";
+            PreparedStatement statementAux = conexion.prepareStatement(sql);
+            resultSet = statement.executeQuery(sql);
+            while(resultSet.next()){
+                jTextNombre.setText(resultSet.getString(5));
+                jTextApellido1.setText(resultSet.getString(6));
+                jTextApellido2.setText(resultSet.getString(7));
+                jTextTelefono.setText(resultSet.getString(8));
+                jTextCorreo.setText(resultSet.getString(9));
                 jcomboSede.setSelectedItem(resultSet.getString(2));
                 jcomborol.setSelectedItem(resultSet.getString(3));
             }
