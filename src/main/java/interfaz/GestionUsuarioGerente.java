@@ -416,18 +416,6 @@ public class GestionUsuarioGerente extends javax.swing.JPanel {
 
         jTable1.setModel(jTable1.getModel());
         jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("Documento");
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Nombre");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Apellido 1");
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Apellido 2");
-            jTable1.getColumnModel().getColumn(4).setHeaderValue("Rol");
-            jTable1.getColumnModel().getColumn(5).setHeaderValue("Estado");
-            jTable1.getColumnModel().getColumn(6).setHeaderValue("Sede");
-            jTable1.getColumnModel().getColumn(7).setHeaderValue("Telefono");
-            jTable1.getColumnModel().getColumn(8).setHeaderValue("Correo");
-            jTable1.getColumnModel().getColumn(9).setHeaderValue("Clave");
-        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

@@ -22,9 +22,9 @@ public class Funciones extends Conexion{
     private Connection conexion;
     private Statement statement;
     private ResultSet resultSet;
-    private String sql;
-    
+    private String sql;   
     private String rol;
+    
 
     //constructor de la clase
     public Funciones()  {
@@ -239,6 +239,7 @@ public class Funciones extends Conexion{
             }            
             jTable.setModel(model);
             jTable.setAutoResizeMode(jTable.AUTO_RESIZE_OFF);
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(130);
             jTable.getColumnModel().getColumn(1).setPreferredWidth(150);
             jTable.getColumnModel().getColumn(8).setPreferredWidth(200);
             jTable.getColumnModel().getColumn(9).setPreferredWidth(150);
@@ -248,6 +249,42 @@ public class Funciones extends Conexion{
             JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
         }        
     }
+    
+    public void creartablaO(javax.swing.JTable jTable){
+        DefaultTableModel model;
+        String[] titulos = {"Documento", "Sede", "Tipo empleado", "Estado", "Nombre", "Apellido 1", "Apellido 2", "telefono", "correo"};
+        String[] registros = new String[50];
+        sql = "SELECT * FROM lista_usuarios()";
+        model = new DefaultTableModel(null, titulos);
+        try {
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+
+                registros[0] = resultSet.getString(1);
+                registros[1] = resultSet.getString(2);
+                registros[2] = resultSet.getString(3);
+                registros[3] = resultSet.getString(4);
+                registros[4] = resultSet.getString(5);
+                registros[5] = resultSet.getString(6);
+                registros[6] = resultSet.getString(7);
+                registros[7] = resultSet.getString(8);
+                registros[8] = resultSet.getString(9);
+                model.addRow(registros);
+                
+            }            
+            jTable.setModel(model);
+            jTable.setAutoResizeMode(jTable.AUTO_RESIZE_OFF);
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(130);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTable.getColumnModel().getColumn(7).setPreferredWidth(150);
+            jTable.getColumnModel().getColumn(8).setPreferredWidth(150);
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+        }        
+    }
+    
     public void creartablausuario(javax.swing.JTable jTable, String indice){
         DefaultTableModel model;
         String[] titulos = {"Documento", "Sede", "Tipo empleado", "estado", "Nombre", "Apellido 1", "Apellido 2", "telefono", "correo", "clave"};
@@ -275,8 +312,43 @@ public class Funciones extends Conexion{
             jTable.setAutoResizeMode(jTable.AUTO_RESIZE_OFF);
             jTable.getColumnModel().getColumn(0).setPreferredWidth(130);
             jTable.getColumnModel().getColumn(1).setPreferredWidth(150);
-            jTable.getColumnModel().getColumn(8).setPreferredWidth(200);
+            jTable.getColumnModel().getColumn(8).setPreferredWidth(150);
             jTable.getColumnModel().getColumn(9).setPreferredWidth(150);
+
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Error", "Error", JOptionPane.ERROR_MESSAGE);
+        }        
+    }
+    
+    public void creartablausuarioO(javax.swing.JTable jTable, String indice){
+        DefaultTableModel model;
+        String[] titulos = {"Documento", "Sede", "Tipo empleado", "estado", "Nombre", "Apellido 1", "Apellido 2", "telefono", "correo"};
+        String[] registros = new String[50];
+        sql = "SELECT * FROM consulta_usuario('"+indice+"')";
+        model = new DefaultTableModel(null, titulos); 
+        try {
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+
+                registros[0] = resultSet.getString(1);
+                registros[1] = resultSet.getString(2);
+                registros[2] = resultSet.getString(3);
+                registros[3] = resultSet.getString(4);
+                registros[4] = resultSet.getString(5);
+                registros[5] = resultSet.getString(6);
+                registros[6] = resultSet.getString(7);
+                registros[7] = resultSet.getString(8);
+                registros[8] = resultSet.getString(9);
+                model.addRow(registros);
+                
+            }            
+            jTable.setModel(model);
+            jTable.setAutoResizeMode(jTable.AUTO_RESIZE_OFF);
+            jTable.getColumnModel().getColumn(0).setPreferredWidth(130);
+            jTable.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTable.getColumnModel().getColumn(7).setPreferredWidth(150);
+            jTable.getColumnModel().getColumn(8).setPreferredWidth(150);
 
             } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
