@@ -194,6 +194,46 @@ public class Funciones extends Conexion{
         
     }
     
+    public void consultar_seguro_combo(javax.swing.JComboBox<String> jcombobox){
+        
+        
+        try{
+            sql = "SELECT tipo_seguro FROM seguro";
+            resultSet = statement.executeQuery(sql);
+              
+            jcombobox.addItem("Tipo de seguro");
+            while (resultSet.next()) {
+                jcombobox.addItem(resultSet.getString("tipo_seguro"));
+            }
+            
+            
+        }
+        catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+        
+    }
+    
+    public void consultar_pago_combo(javax.swing.JComboBox<String> jcombobox){
+        
+        
+        try{
+            sql = "SELECT tipo_pago FROM tipo_pago";
+            resultSet = statement.executeQuery(sql);
+              
+            jcombobox.addItem("Tipo de pago");
+            while (resultSet.next()) {
+                jcombobox.addItem(resultSet.getString("tipo_pago"));
+            }
+            
+            
+        }
+        catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+        
+    }
+    
     public void consultar_estados_combo(javax.swing.JComboBox<String> jcombobox){
         
         
@@ -528,6 +568,54 @@ public class Funciones extends Conexion{
             }                   
         }catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo un error en el proceso, no se ha elimnado nada");
+        }
+    }
+    
+    public void registrarRemitente(String documento, String nombre, String apellido, String telefono) {
+
+        try {
+
+            sql = "SELECT agregar_cliente ('" + documento.toUpperCase() + "','" + nombre.toUpperCase() + "','" + apellido.toUpperCase() + "','"+ telefono +"')";
+            statement.executeQuery(sql);
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    public void registrarDestinatario(String documento, String nombre, String apellido, String telefono) {
+
+        try {
+
+            sql = "SELECT agregar_destinatario ('" + documento.toUpperCase() + "','" + nombre.toUpperCase() + "','" + apellido.toUpperCase() + "','"+ telefono +"')";
+            statement.executeQuery(sql);
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    public void calcularprecio(double peso, double valorpaquete, String seguro, javax.swing.JTextField jText){
+        double impuesto=1.19;
+        double preciobase=0;
+        double valorSeguro=0;
+        JOptionPane.showMessageDialog(null, peso);
+        try{
+            sql = "SELECT * FROM precios_envios";
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                preciobase = resultSet.getDouble(3);
+            }
+            sql = "SELECT * FROM seguro WHERE tipo_seguro = '"+seguro+"'";
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                valorSeguro = resultSet.getDouble(3);
+            }
+            double precioenvio = preciobase+(valorpaquete*0.1)*peso;
+            precioenvio = (precioenvio*impuesto)+valorSeguro;
+            jText.setText("$"+precioenvio+"");
+        }catch (SQLException e){
+            System.err.println(e.getMessage());
         }
     }
 }
