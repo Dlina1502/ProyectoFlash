@@ -24,8 +24,7 @@ public class JFrame_operador extends javax.swing.JFrame {
      */
     public JFrame_operador() {
         initComponents();
-        jPanel7.add(factura);
-        //jPanel7.add(gestionUsuario);
+        jPanel7.add(gestionUsuario);
     }
 
     /**
@@ -44,7 +43,7 @@ public class JFrame_operador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("OPERADOR");
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);

@@ -40,10 +40,9 @@ public class JFrame_secretaria extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SECRETARIA");
         setLocation(new java.awt.Point(0, 0));
-        setPreferredSize(new java.awt.Dimension(820, 550));
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
 
