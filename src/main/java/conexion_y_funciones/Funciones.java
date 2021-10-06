@@ -5,7 +5,11 @@
  */
 package conexion_y_funciones;
 
+import interfaz.TerminalDeVentas;
 import java.awt.List;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.util.*;
 import java.net.URISyntaxException;
 import java.sql.*;
@@ -30,6 +34,7 @@ public class Funciones extends Conexion{
     private ResultSet resultSet;
     private String sql;   
     private String rol;
+    //TerminalDeVentas terminal = new TerminalDeVentas();
     
 
     //constructor de la clase
@@ -788,4 +793,70 @@ public class Funciones extends Conexion{
             JOptionPane.showMessageDialog(null, "Hubo un error en el proceso, no se consultó nada");
         }
     }
+    
+    public void consultarFactura(javax.swing.JTextField ciudad, javax.swing.JTextField barrio, javax.swing.JTextField direccion,
+            javax.swing.JTextField tel, javax.swing.JTextField cod, javax.swing.JTextField fecha,
+            javax.swing.JTextField doc1, javax.swing.JTextField nombre1, javax.swing.JTextField apellido1,
+            javax.swing.JTextField tel1, javax.swing.JTextField doc2, javax.swing.JTextField nombre2,
+            javax.swing.JTextField apellido2, javax.swing.JTextField tel2, javax.swing.JTextField base, javax.swing.JTextField peso,
+            javax.swing.JTextField total){
+        sql = "select * from (select factura.id_factura, CONCAT(sedes.barrio,'//',sedes.direccion,'//',ciudad_sede.ciudad),\n" +
+"               telefonos_sedes.telefono,seguro.tipo_seguro, factura.valor_paquete, \n" +
+"               envios.ciudad_origen, envios.ciudad_llegada, envios.direccion,\n" +
+"               cliente.documento_cliente, cliente.nombre, cliente.apellido,cliente.celular,\n" +
+"               destinatario.documento_destinatario, destinatario.nombre, destinatario.apellido,destinatario.celular,\n" +
+"               tipo_pago.tipo_pago,\n" +
+"               factura.fecha, factura.precio_envio from factura inner join sedes on factura.id_sede = sedes.id_sede \n" +
+"                                                    inner join ciudad_sede on sedes.id_ciudad = ciudad_sede.id_ciudad\n" +
+"                                                    inner join telefonos_sedes on sedes.id_sede = telefonos_sedes.id_sede\n" +
+"                                                    inner join seguro on factura.id_seguro = seguro.id_seguro\n" +
+"                                                    inner join envios on factura.id_envio= envios.id_envio \n" +
+"                                                    inner join cliente on envios.documento_cliente = cliente.documento_cliente\n" +
+"                                                    inner join destinatario on envios.documento_destinatario = destinatario.documento_destinatario\n" +
+"                                                    inner join tipo_pago on factura.id_tipo_pago = tipo_pago.id_tipo_pago) as np\n" +
+"                                                    order by np.id_factura desc\n" +
+"                                                    FETCH FIRST 1 ROWS ONLY";
+        try {
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                String Ciudad = resultSet.getString(2); 
+                String Tel = resultSet.getString(3);
+                String Cod = resultSet.getString(1);
+                String Fecha = resultSet.getString(18);
+                String Doc1 = resultSet.getString(9);
+                String Nombre1 = resultSet.getString(10);
+                String Apellido1 = resultSet.getString(11);
+                String Tel1 = resultSet.getString(12);
+                String Doc2 = resultSet.getString(13);
+                String Nombre2 = resultSet.getString(14);
+                String Apellido2 = resultSet.getString(15);
+                String Tel2 = resultSet.getString(16);
+                double Base = 9000.00;
+                String Peso = "5";
+                String Total = resultSet.getString(19);
+                String[] partSede = Ciudad.split("//");
+                ciudad.setText(partSede[2]);
+                barrio.setText(partSede[0]);
+                direccion.setText(partSede[1]);
+                tel.setText(Tel);
+                cod.setText(Cod);
+                fecha.setText(Fecha);
+                doc1.setText(Doc1);
+                nombre1.setText(Nombre1);
+                apellido1.setText(Apellido1);
+                tel1.setText(Tel1);
+                doc2.setText(Doc2);
+                nombre2.setText(Nombre2);
+                apellido2.setText(Apellido2);
+                tel2.setText(Tel2);
+                base.setText(""+Base);
+                peso.setText(Peso);
+                total.setText(Total);
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+        }        
+    }   
+    
 }

@@ -8,11 +8,14 @@ package interfaz;
     import conexion_y_funciones.Funciones;
     import java.awt.Color;
     import interfaz.Factura;
+import java.awt.Dimension;
     import java.awt.event.ActionEvent;
     import java.sql.Connection;
     import java.sql.ResultSet;
     import java.sql.Statement;
+import javax.swing.JFrame;
     import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
     import javax.swing.table.DefaultTableModel;
 public class TerminalDeVentas extends javax.swing.JPanel {
     
@@ -25,6 +28,10 @@ public class TerminalDeVentas extends javax.swing.JPanel {
         funciones.consultar_pago_combo(jComboBox1);
         jComboBox2.removeAllItems();
         funciones.consultar_sedes_combo(jComboBox2);
+    }
+    
+    public String getjTextpeso(){
+        return jTextField48.getText();
     }
 
     /**
@@ -670,7 +677,7 @@ public class TerminalDeVentas extends javax.swing.JPanel {
         double preciopaquete = Double.parseDouble(jTextField1.getText());
         double precioenvio = Double.parseDouble(jTextField49.getText());
         funciones.registrarFactura(partsSede[0], partsSede[1], partsSede[2], tipopago, tiposeguro, preciopaquete, precioenvio);
-        new Factura().setVisible(true);
+        new Ventanafactura().setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox2MouseClicked

@@ -12,6 +12,7 @@ import interfaz.JFrame_operador;
 import interfaz.JFrame_inicio;
 import interfaz.JFrame_secretaria;
 import interfaz.Factura;
+import interfaz.Ventanafactura;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.Date;
@@ -48,7 +49,7 @@ public class Main {
         reporte.setVisible(true);*/
                 
         //new JFrame_inicio().setVisible(true);
-        new JFrame_operador().setVisible(true);
+        new JFrame_inicio().setVisible(true);
     }
 
     
