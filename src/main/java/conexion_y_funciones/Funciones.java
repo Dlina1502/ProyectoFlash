@@ -5,10 +5,13 @@
  */
 package conexion_y_funciones;
 
+import java.awt.List;
+import java.util.*;
 import java.net.URISyntaxException;
 import java.sql.*;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -713,5 +716,76 @@ public class Funciones extends Conexion{
                     alternate = !alternate;
             }
             return (sum % 10 == 0);
+    }
+    
+    public void consultaEnviosMeses(int[][] arreglo, int anio){
+        try{
+            sql = "select EXTRACT(MONTH FROM fecha),count (id_factura) from factura where EXTRACT(YEAR FROM fecha) = "+anio+" group by extract(MONTH from fecha);";
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                arreglo[resultSet.getInt(1)-1][0] =  resultSet.getInt(2);
+            }                  
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error en el proceso, no se consultó nada");
+        }
+    }
+    
+    public void consultaVentasSedes(ArrayList ventas, ArrayList sedes, int anio){
+        try{
+            sql = "select count(id_factura), np.id_sede,np.concat from (select factura.id_sede,factura.fecha ,CONCAT(sedes.barrio,'//',sedes.direccion,'//',ciudad_sede.ciudad), factura.id_factura\n" +
+                  " from factura inner join sedes on factura.id_sede = sedes.id_sede\n" +
+                  " inner join ciudad_sede on sedes.id_ciudad = ciudad_sede.id_ciudad) as np\n" +
+                  " where EXTRACT(YEAR FROM np.fecha) = "+anio+"\n" +
+                  " group by np.id_sede, np.concat";
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                sedes.add(resultSet.getString(3));
+                ventas.add(resultSet.getInt(1));
+            }                 
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error en el proceso, no se consultó nada");
+        }
+    }
+    
+    public void consultaTopCiudadDestino(ArrayList ciudades, ArrayList ventas){
+        try{
+            sql = "select count(envios.id_envio) as mayor, envios.ciudad_llegada from envios group by envios.ciudad_llegada order by mayor desc\n" +
+                  "    FETCH FIRST 5 ROWS ONLY";
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                ciudades.add(resultSet.getString(2));
+                ventas.add(resultSet.getInt(1));
+            }                 
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error en el proceso, no se consultó nada");
+        }
+    }
+    
+    public void consultaEmpleadosSedes(ArrayList numEmpleados, ArrayList sedes){
+        try{
+            sql = "select count(np.documento_empleado), np.concat from (select informacion_empleados.id_sede,informacion_empleados.documento_empleado ,CONCAT(sedes.barrio,'//',sedes.direccion,'//',ciudad_sede.ciudad)\n" +
+                  "    from informacion_empleados inner join sedes on informacion_empleados.id_sede = sedes.id_sede\n" +
+                  "    inner join ciudad_sede on sedes.id_ciudad = ciudad_sede.id_ciudad) as np\n" +
+                  "    group by np.id_sede, np.concat";
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                sedes.add(resultSet.getString(2));
+                numEmpleados.add(resultSet.getInt(1));
+            }                 
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error en el proceso, no se consultó nada");
+        }
+    }
+    
+    public void consultaVentasMeses(int[][] arreglo, int anio){
+        try{
+            sql = "select EXTRACT(MONTH FROM fecha),sum (precio_envio) from factura where EXTRACT(YEAR FROM fecha) = "+anio+" group by extract(MONTH from fecha);";
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                arreglo[resultSet.getInt(1)-1][0] =  resultSet.getInt(2);
+            }                  
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error en el proceso, no se consultó nada");
+        }
     }
 }
