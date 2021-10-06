@@ -11,6 +11,7 @@ import interfaz.JFrame_gerente;
 import interfaz.JFrame_operador;
 import interfaz.JFrame_inicio;
 import interfaz.JFrame_secretaria;
+import interfaz.Factura;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.Date;
