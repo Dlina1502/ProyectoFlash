@@ -13,8 +13,10 @@ import interfaz.JFrame_inicio;
 import interfaz.JFrame_secretaria;
 import java.net.URISyntaxException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 
 
@@ -37,7 +39,7 @@ public class Main {
         
         
         //new JFrame_inicio().setVisible(true);
-        new JFrame_secretaria().setVisible(true);
+        new JFrame_operador().setVisible(true);
     }
 
     

@@ -7,10 +7,13 @@ package conexion_y_funciones;
 
 import java.net.URISyntaxException;
 import java.sql.*;
+import java.time.Instant;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import java.util.Date;
 
 /**
  *
@@ -560,9 +563,9 @@ public class Funciones extends Conexion{
         }        
     }
     
-    public void editarSede(String barrieE, String direccionE, String ciudadE, String barrio, String direccion, String ciudad, String telefono) {
+    public void editarSede(String barrioE, String direccionE, String ciudadE, String barrio, String direccion, String ciudad, String telefono) {
         try {
-            sql = "SELECT * FROM consultar_datos_sede('"+barrieE+"','"+direccionE+"','"+ciudadE+"')";
+            sql = "SELECT * FROM consultar_datos_sede('"+barrioE+"','"+direccionE+"','"+ciudadE+"')";
             resultSet = statement.executeQuery(sql);
             int id_sede = 0;
             while (resultSet.next()){
@@ -642,11 +645,40 @@ public class Funciones extends Conexion{
         }
     }
     
+    public void registrarEnvio(String ciudadS, String ciudadL, String direccion, String documento1, String documento2) {
+
+        try {
+            
+            sql = "SELECT crear_envio('"+ciudadS.toUpperCase()+"','"+ciudadL.toUpperCase()+"','"+direccion.toUpperCase()+"','"+documento1+"','"+documento2+"')";
+            statement.executeQuery(sql);
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    public void registrarFactura(String barrioE, String direccionE, String ciudadE, String tipopago, String tiposeguro, double valor_paquete, double precioenvio) {
+
+        try {            
+            Date fecha =  Date.from(Instant.now());
+            sql = "SELECT * FROM consultar_datos_sede('"+barrioE+"','"+direccionE+"','"+ciudadE+"')";
+            resultSet = statement.executeQuery(sql);
+            int id_sede = 0;
+            while (resultSet.next()){
+                id_sede = resultSet.getInt(1);
+            }
+            sql = "select crear_factura("+id_sede+",'"+tipopago.toUpperCase()+"','"+tiposeguro.toUpperCase()+"',"+valor_paquete+",'"+fecha+"',"+precioenvio+")";
+            statement.executeQuery(sql);
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    
     public void calcularprecio(double peso, double valorpaquete, String seguro, javax.swing.JTextField jText){
         double impuesto=1.19;
         double preciobase=0;
         double valorSeguro=0;
-        JOptionPane.showMessageDialog(null, peso);
         try{
             sql = "SELECT * FROM precios_envios";
             resultSet = statement.executeQuery(sql);
@@ -660,9 +692,26 @@ public class Funciones extends Conexion{
             }
             double precioenvio = preciobase+(valorpaquete*0.1)*peso;
             precioenvio = (precioenvio*impuesto)+valorSeguro;
-            jText.setText("$"+precioenvio+"");
+            jText.setText(""+precioenvio);
         }catch (SQLException e){
             System.err.println(e.getMessage());
         }
+    }
+    
+    public boolean validartarjeta(String tarjeta){
+            int sum = 0;
+            boolean alternate = false;
+            for (int i = tarjeta.length() - 1; i >= 0; i--){
+                    int n = Integer.parseInt(tarjeta.substring(i, i + 1));
+                    if (alternate){
+                            n *= 2;
+                            if (n > 9){
+                                    n = (n % 10) + 1;
+                            }
+                    }
+                    sum += n;
+                    alternate = !alternate;
+            }
+            return (sum % 10 == 0);
     }
 }
