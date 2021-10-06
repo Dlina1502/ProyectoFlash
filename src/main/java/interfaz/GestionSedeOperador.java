@@ -5,6 +5,10 @@
  */
 package interfaz;
 
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -14,6 +18,23 @@ public class GestionSedeOperador extends javax.swing.JPanel {
     /**
      * Creates new form GestionSedeGerente
      */
+    
+    //Añadir placeholder a los textfield
+    public void addPlaceholder(JTextField textField){
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.gray);
+    }
+    
+    //Quitar placeholder a los textfield
+    public void removePlaceholder(JTextField textField){
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.black);
+    }
+    
     public GestionSedeOperador() {
         initComponents();
     }
@@ -34,14 +55,14 @@ public class GestionSedeOperador extends javax.swing.JPanel {
         jLabel43 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator71 = new javax.swing.JSeparator();
-        jTextField43 = new javax.swing.JTextField();
+        buscar_sede = new javax.swing.JTextField();
         jSeparator72 = new javax.swing.JSeparator();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jSeparator83 = new javax.swing.JSeparator();
-        jTextField51 = new javax.swing.JTextField();
+        buscar_barrio = new javax.swing.JTextField();
         jButton17 = new javax.swing.JButton();
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -63,10 +84,18 @@ public class GestionSedeOperador extends javax.swing.JPanel {
 
         jSeparator71.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextField43.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField43.setText("Ciudad de la sede");
-        jTextField43.setBorder(null);
-        jTextField43.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_sede.setForeground(new java.awt.Color(153, 153, 153));
+        buscar_sede.setText("Ciudad de la sede");
+        buscar_sede.setBorder(null);
+        buscar_sede.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_sede.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                buscar_sedeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscar_sedeFocusLost(evt);
+            }
+        });
 
         jSeparator72.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -85,10 +114,23 @@ public class GestionSedeOperador extends javax.swing.JPanel {
 
         jSeparator83.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextField51.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField51.setText("Barrio de la sede ");
-        jTextField51.setBorder(null);
-        jTextField51.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_barrio.setForeground(new java.awt.Color(153, 153, 153));
+        buscar_barrio.setText("Barrio de la sede");
+        buscar_barrio.setBorder(null);
+        buscar_barrio.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_barrio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                buscar_barrioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscar_barrioFocusLost(evt);
+            }
+        });
+        buscar_barrio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscar_barrioActionPerformed(evt);
+            }
+        });
 
         jButton17.setText("CONSULTAR");
 
@@ -111,10 +153,10 @@ public class GestionSedeOperador extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jSeparator83)
-                                .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(buscar_barrio, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jSeparator72)
-                                .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(buscar_sede, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,14 +189,14 @@ public class GestionSedeOperador extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buscar_sede, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator72, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(buscar_barrio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -192,8 +234,46 @@ public class GestionSedeOperador extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void buscar_sedeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_sedeFocusGained
+        if(buscar_sede.getText().equals("Ciudad de la sede")){
+            buscar_sede.setText(null);
+            buscar_sede.requestFocus();
+            // quitar place holder
+            removePlaceholder(buscar_sede);
+        }
+    }//GEN-LAST:event_buscar_sedeFocusGained
+
+    private void buscar_sedeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_sedeFocusLost
+        if(buscar_sede.getText().length() == 0){
+            addPlaceholder(buscar_sede);
+            buscar_sede.setText("Ciudad de la sede");
+        }
+    }//GEN-LAST:event_buscar_sedeFocusLost
+
+    private void buscar_barrioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_barrioFocusGained
+        if(buscar_barrio.getText().equals("Barrio de la sede")){
+           buscar_barrio.setText(null);
+           buscar_barrio.requestFocus();
+            // quitar place holder
+           removePlaceholder(buscar_barrio);
+        }
+    }//GEN-LAST:event_buscar_barrioFocusGained
+
+    private void buscar_barrioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_barrioFocusLost
+        if(buscar_barrio.getText().length() == 0){
+           addPlaceholder(buscar_barrio);
+           buscar_barrio.setText("Barrio de la sede");
+        }
+    }//GEN-LAST:event_buscar_barrioFocusLost
+
+    private void buscar_barrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_barrioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscar_barrioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField buscar_barrio;
+    private javax.swing.JTextField buscar_sede;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton17;
@@ -208,7 +288,5 @@ public class GestionSedeOperador extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator83;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField51;
     // End of variables declaration//GEN-END:variables
 }

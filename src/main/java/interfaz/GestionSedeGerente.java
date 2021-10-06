@@ -6,16 +6,36 @@
 package interfaz;
 
     import conexion_y_funciones.Funciones;
+import java.awt.Color;
+import java.awt.Font;
     import java.awt.event.ActionEvent;
     import java.sql.Connection;
     import java.sql.ResultSet;
     import java.sql.Statement;
     import javax.swing.JOptionPane;
+import javax.swing.JTextField;
     import javax.swing.table.DefaultTableModel;
 
 public class GestionSedeGerente extends javax.swing.JPanel {
 
     Funciones funciones = new Funciones();
+    
+    //Añadir placeholder a los textfield
+    public void addPlaceholder(JTextField textField){
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.gray);
+    }
+    
+    //Quitar placeholder a los textfield
+    public void removePlaceholder(JTextField textField){
+        Font font = textField.getFont();
+        font = font.deriveFont(Font.PLAIN);
+        textField.setFont(font);
+        textField.setForeground(Color.black);
+    }
+    
     public GestionSedeGerente() {
         initComponents();
         jComboBox13.removeAllItems();
@@ -38,12 +58,12 @@ public class GestionSedeGerente extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jSeparator61 = new javax.swing.JSeparator();
-        jTextField37 = new javax.swing.JTextField();
+        campo_ciudad = new javax.swing.JTextField();
         jSeparator62 = new javax.swing.JSeparator();
-        jTextField38 = new javax.swing.JTextField();
+        campo_barrio = new javax.swing.JTextField();
         jSeparator63 = new javax.swing.JSeparator();
-        jTextField39 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
+        campo_telefono = new javax.swing.JTextField();
+        campo_direccion = new javax.swing.JTextField();
         jSeparator64 = new javax.swing.JSeparator();
         jButton10 = new javax.swing.JButton();
         jLabel47 = new javax.swing.JLabel();
@@ -53,12 +73,12 @@ public class GestionSedeGerente extends javax.swing.JPanel {
         jLabel43 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator71 = new javax.swing.JSeparator();
-        jTextField43 = new javax.swing.JTextField();
+        buscar_sede = new javax.swing.JTextField();
         jSeparator72 = new javax.swing.JSeparator();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jSeparator83 = new javax.swing.JSeparator();
-        jTextField51 = new javax.swing.JTextField();
+        buscar_barrio = new javax.swing.JTextField();
         jButton17 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -74,13 +94,13 @@ public class GestionSedeGerente extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jTextField45 = new javax.swing.JTextField();
+        editar_barrio = new javax.swing.JTextField();
         jSeparator75 = new javax.swing.JSeparator();
-        jTextField47 = new javax.swing.JTextField();
+        editar_direccion = new javax.swing.JTextField();
         jSeparator77 = new javax.swing.JSeparator();
-        jTextField48 = new javax.swing.JTextField();
+        editar_ciudad = new javax.swing.JTextField();
         jSeparator78 = new javax.swing.JSeparator();
-        jTextField49 = new javax.swing.JTextField();
+        editar_telefono = new javax.swing.JTextField();
         jSeparator79 = new javax.swing.JSeparator();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
@@ -98,32 +118,64 @@ public class GestionSedeGerente extends javax.swing.JPanel {
 
         jSeparator61.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextField37.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField37.setText("Ciudad");
-        jTextField37.setBorder(null);
-        jTextField37.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_ciudad.setForeground(new java.awt.Color(153, 153, 153));
+        campo_ciudad.setText("Ciudad");
+        campo_ciudad.setBorder(null);
+        campo_ciudad.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_ciudad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_ciudadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_ciudadFocusLost(evt);
+            }
+        });
 
         jSeparator62.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextField38.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField38.setText("Barrio");
-        jTextField38.setBorder(null);
-        jTextField38.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_barrio.setForeground(new java.awt.Color(153, 153, 153));
+        campo_barrio.setText("Barrio");
+        campo_barrio.setBorder(null);
+        campo_barrio.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_barrio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_barrioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_barrioFocusLost(evt);
+            }
+        });
 
         jSeparator63.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextField39.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField39.setText("Número de teléfono");
-        jTextField39.setBorder(null);
-        jTextField39.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_telefono.setForeground(new java.awt.Color(153, 153, 153));
+        campo_telefono.setText("Número de teléfono");
+        campo_telefono.setBorder(null);
+        campo_telefono.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_telefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_telefonoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_telefonoFocusLost(evt);
+            }
+        });
 
-        jTextField40.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField40.setText("Dirección");
-        jTextField40.setBorder(null);
-        jTextField40.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField40.addActionListener(new java.awt.event.ActionListener() {
+        campo_direccion.setForeground(new java.awt.Color(153, 153, 153));
+        campo_direccion.setText("Dirección");
+        campo_direccion.setBorder(null);
+        campo_direccion.setPreferredSize(new java.awt.Dimension(7, 24));
+        campo_direccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campo_direccionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campo_direccionFocusLost(evt);
+            }
+        });
+        campo_direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField40jTextField4ActionPerformed(evt);
+                campo_direccionjTextField4ActionPerformed(evt);
             }
         });
 
@@ -155,16 +207,16 @@ public class GestionSedeGerente extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campo_barrio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator62, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campo_ciudad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator61, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campo_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator63, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campo_direccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator64, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(145, 145, 145))))
             .addGroup(jPanel9Layout.createSequentialGroup()
@@ -180,19 +232,19 @@ public class GestionSedeGerente extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel47)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jTextField37, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator61, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_barrio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator62, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator64, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campo_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator63, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
@@ -219,10 +271,18 @@ public class GestionSedeGerente extends javax.swing.JPanel {
 
         jSeparator71.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextField43.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField43.setText("Ciudad de la sede");
-        jTextField43.setBorder(null);
-        jTextField43.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_sede.setForeground(new java.awt.Color(153, 153, 153));
+        buscar_sede.setText("Ciudad de la sede");
+        buscar_sede.setBorder(null);
+        buscar_sede.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_sede.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                buscar_sedeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscar_sedeFocusLost(evt);
+            }
+        });
 
         jSeparator72.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -247,10 +307,18 @@ public class GestionSedeGerente extends javax.swing.JPanel {
 
         jSeparator83.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextField51.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField51.setText("Barrio de la sede ");
-        jTextField51.setBorder(null);
-        jTextField51.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_barrio.setForeground(new java.awt.Color(153, 153, 153));
+        buscar_barrio.setText("Barrio de la sede");
+        buscar_barrio.setBorder(null);
+        buscar_barrio.setPreferredSize(new java.awt.Dimension(7, 24));
+        buscar_barrio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                buscar_barrioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscar_barrioFocusLost(evt);
+            }
+        });
 
         jButton17.setText("IR");
         jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -292,10 +360,10 @@ public class GestionSedeGerente extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jSeparator83)
-                                .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(buscar_barrio, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jSeparator72)
-                                .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(buscar_sede, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -319,14 +387,14 @@ public class GestionSedeGerente extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buscar_sede, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator72, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(buscar_barrio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -433,39 +501,71 @@ public class GestionSedeGerente extends javax.swing.JPanel {
         jLabel46.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel46.setText("Datos de la sede:");
 
-        jTextField45.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField45.setText("Barrio");
-        jTextField45.setBorder(null);
-        jTextField45.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_barrio.setForeground(new java.awt.Color(153, 153, 153));
+        editar_barrio.setText("Barrio");
+        editar_barrio.setBorder(null);
+        editar_barrio.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_barrio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                editar_barrioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                editar_barrioFocusLost(evt);
+            }
+        });
 
         jSeparator75.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextField47.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField47.setText("Direccion");
-        jTextField47.setBorder(null);
-        jTextField47.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField47.addActionListener(new java.awt.event.ActionListener() {
+        editar_direccion.setForeground(new java.awt.Color(153, 153, 153));
+        editar_direccion.setText("Dirección");
+        editar_direccion.setBorder(null);
+        editar_direccion.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_direccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                editar_direccionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                editar_direccionFocusLost(evt);
+            }
+        });
+        editar_direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField47jTextField4ActionPerformed(evt);
+                editar_direccionjTextField4ActionPerformed(evt);
             }
         });
 
         jSeparator77.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextField48.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField48.setText("Ciudad");
-        jTextField48.setBorder(null);
-        jTextField48.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_ciudad.setForeground(new java.awt.Color(153, 153, 153));
+        editar_ciudad.setText("Ciudad");
+        editar_ciudad.setBorder(null);
+        editar_ciudad.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_ciudad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                editar_ciudadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                editar_ciudadFocusLost(evt);
+            }
+        });
 
         jSeparator78.setBackground(new java.awt.Color(0, 0, 0));
 
-        jTextField49.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField49.setText("Teléfono");
-        jTextField49.setBorder(null);
-        jTextField49.setPreferredSize(new java.awt.Dimension(7, 24));
-        jTextField49.addActionListener(new java.awt.event.ActionListener() {
+        editar_telefono.setForeground(new java.awt.Color(153, 153, 153));
+        editar_telefono.setText("Número de teléfono");
+        editar_telefono.setBorder(null);
+        editar_telefono.setPreferredSize(new java.awt.Dimension(7, 24));
+        editar_telefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                editar_telefonoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                editar_telefonoFocusLost(evt);
+            }
+        });
+        editar_telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField49jTextField5ActionPerformed(evt);
+                editar_telefonojTextField5ActionPerformed(evt);
             }
         });
 
@@ -512,13 +612,13 @@ public class GestionSedeGerente extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editar_barrio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator75)
-                            .addComponent(jTextField48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editar_ciudad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator78)
-                            .addComponent(jTextField47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editar_direccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator77)
-                            .addComponent(jTextField49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editar_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator79, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
@@ -542,24 +642,24 @@ public class GestionSedeGerente extends javax.swing.JPanel {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel46)
                 .addGap(5, 5, 5)
-                .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editar_barrio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator75, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editar_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator77, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editar_ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator78, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField49, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addComponent(editar_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(jSeparator79, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addContainerGap(339, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("EDITAR SEDE", jPanel5);
@@ -580,17 +680,17 @@ public class GestionSedeGerente extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField40jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField40jTextField4ActionPerformed
+    private void campo_direccionjTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_direccionjTextField4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField40jTextField4ActionPerformed
+    }//GEN-LAST:event_campo_direccionjTextField4ActionPerformed
 
-    private void jTextField47jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField47jTextField4ActionPerformed
+    private void editar_direccionjTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_direccionjTextField4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField47jTextField4ActionPerformed
+    }//GEN-LAST:event_editar_direccionjTextField4ActionPerformed
 
-    private void jTextField49jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField49jTextField5ActionPerformed
+    private void editar_telefonojTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_telefonojTextField5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField49jTextField5ActionPerformed
+    }//GEN-LAST:event_editar_telefonojTextField5ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
@@ -601,10 +701,10 @@ public class GestionSedeGerente extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
-        String ciudad = jTextField37.getText();
-        String barrio = jTextField38.getText();
-        String direccion = jTextField40.getText();
-        String telefono = jTextField39.getText();
+        String ciudad = campo_ciudad.getText();
+        String barrio = campo_barrio.getText();
+        String direccion = campo_direccion.getText();
+        String telefono = campo_telefono.getText();
         funciones.registrarSedes(barrio, direccion, ciudad, telefono);
     }//GEN-LAST:event_jButton10MouseClicked
 
@@ -613,12 +713,12 @@ public class GestionSedeGerente extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton12MouseClicked
 
     private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
-        String ciudad = jTextField43.getText();
+        String ciudad = buscar_sede.getText();
         funciones.creartablasedeciudad(jTable1, ciudad);        
     }//GEN-LAST:event_jButton11MouseClicked
 
     private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
-        String barrio = jTextField51.getText();
+        String barrio = buscar_barrio.getText();
         funciones.creartablasedebarrio(jTable1, barrio);
     }//GEN-LAST:event_jButton17MouseClicked
 
@@ -630,10 +730,10 @@ public class GestionSedeGerente extends javax.swing.JPanel {
 
     private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
         String sede = (String) jComboBox14.getSelectedItem();
-        String ciudad = jTextField48.getText();
-        String barrio = jTextField45.getText();
-        String direccion = jTextField47.getText();
-        String telefono = jTextField49.getText();
+        String ciudad = editar_ciudad.getText();
+        String barrio = editar_barrio.getText();
+        String direccion = editar_direccion.getText();
+        String telefono = editar_telefono.getText();
         String[] parteSede = sede.split("//");
         funciones.editarSede(parteSede[0],parteSede[1],parteSede[2], barrio, direccion, ciudad, telefono);
     }//GEN-LAST:event_jButton15MouseClicked
@@ -651,11 +751,181 @@ public class GestionSedeGerente extends javax.swing.JPanel {
     private void jButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton14MouseClicked
         String sede = (String) jComboBox14.getSelectedItem();
         String[] parteSede = sede.split("//");
-        funciones.consultarSede(parteSede[0], parteSede[1], parteSede[2], jTextField45, jTextField47, jTextField48, jTextField49);
+        funciones.consultarSede(parteSede[0], parteSede[1], parteSede[2], editar_barrio, editar_direccion, editar_ciudad, editar_telefono);
     }//GEN-LAST:event_jButton14MouseClicked
+
+    private void campo_ciudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_ciudadFocusGained
+        if(campo_ciudad.getText().equals("Ciudad")){
+            campo_ciudad.setText(null);
+            campo_ciudad.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_ciudad);
+        }
+    }//GEN-LAST:event_campo_ciudadFocusGained
+
+    private void campo_ciudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_ciudadFocusLost
+        if(campo_ciudad.getText().length() == 0){
+            addPlaceholder(campo_ciudad);
+            campo_ciudad.setText("Ciudad");
+        }
+    }//GEN-LAST:event_campo_ciudadFocusLost
+
+    private void campo_barrioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_barrioFocusGained
+        if(campo_barrio.getText().equals("Barrio")){
+            campo_barrio.setText(null);
+            campo_barrio.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_barrio);
+        }
+    }//GEN-LAST:event_campo_barrioFocusGained
+
+    private void campo_barrioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_barrioFocusLost
+        if(campo_barrio.getText().length() == 0){
+            addPlaceholder(campo_barrio);
+            campo_barrio.setText("Barrio");
+        }
+    }//GEN-LAST:event_campo_barrioFocusLost
+
+    private void campo_direccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_direccionFocusGained
+        if(campo_direccion.getText().equals("Dirección")){
+            campo_direccion.setText(null);
+            campo_direccion.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_direccion);
+        }
+    }//GEN-LAST:event_campo_direccionFocusGained
+
+    private void campo_direccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_direccionFocusLost
+        if(campo_direccion.getText().length() == 0){
+            addPlaceholder(campo_direccion);
+            campo_direccion.setText("Dirección");
+        }
+    }//GEN-LAST:event_campo_direccionFocusLost
+
+    private void campo_telefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_telefonoFocusGained
+        if(campo_telefono.getText().equals("Número de teléfono")){
+            campo_telefono.setText(null);
+            campo_telefono.requestFocus();
+            // quitar place holder
+            removePlaceholder(campo_telefono);
+        }
+    }//GEN-LAST:event_campo_telefonoFocusGained
+
+    private void campo_telefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campo_telefonoFocusLost
+        if(campo_telefono.getText().length() == 0){
+            addPlaceholder(campo_telefono);
+            campo_telefono.setText("Número de teléfono");
+        }
+    }//GEN-LAST:event_campo_telefonoFocusLost
+
+    private void buscar_sedeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_sedeFocusGained
+        if(buscar_sede.getText().equals("Ciudad de la sede")){
+            buscar_sede.setText(null);
+            buscar_sede.requestFocus();
+            // quitar place holder
+            removePlaceholder(buscar_sede);
+        }
+    }//GEN-LAST:event_buscar_sedeFocusGained
+
+    private void buscar_sedeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_sedeFocusLost
+        if(buscar_sede.getText().length() == 0){
+            addPlaceholder(buscar_sede);
+            buscar_sede.setText("Ciudad de la sede");
+        }
+    }//GEN-LAST:event_buscar_sedeFocusLost
+
+    private void buscar_barrioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_barrioFocusGained
+        if(buscar_barrio.getText().equals("Barrio de la sede")){
+           buscar_barrio.setText(null);
+           buscar_barrio.requestFocus();
+            // quitar place holder
+           removePlaceholder(buscar_barrio);
+        }
+    }//GEN-LAST:event_buscar_barrioFocusGained
+
+    private void editar_barrioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_barrioFocusGained
+        if(editar_barrio.getText().equals("Barrio")){
+            editar_barrio.setText(null);
+            editar_barrio.requestFocus();
+            // quitar place holder
+            removePlaceholder(editar_barrio);
+        }
+    }//GEN-LAST:event_editar_barrioFocusGained
+
+    private void editar_barrioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_barrioFocusLost
+        if(editar_barrio.getText().length() == 0){
+            addPlaceholder(editar_barrio);
+            editar_barrio.setText("Barrio");
+        }
+    }//GEN-LAST:event_editar_barrioFocusLost
+
+    private void editar_direccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_direccionFocusGained
+        if(editar_direccion.getText().equals("Dirección")){
+            editar_direccion.setText(null);
+            editar_direccion.requestFocus();
+            // quitar place holder
+            removePlaceholder(editar_direccion);
+        }
+    }//GEN-LAST:event_editar_direccionFocusGained
+
+    private void editar_direccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_direccionFocusLost
+        if(editar_direccion.getText().length() == 0){
+           addPlaceholder(editar_direccion);
+           editar_direccion.setText("Dirección");
+        }
+    }//GEN-LAST:event_editar_direccionFocusLost
+
+    private void editar_ciudadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_ciudadFocusGained
+        if(editar_ciudad.getText().equals("Ciudad")){
+            editar_ciudad.setText(null);
+            editar_ciudad.requestFocus();
+            // quitar place holder
+            removePlaceholder(editar_ciudad);
+        }
+    }//GEN-LAST:event_editar_ciudadFocusGained
+
+    private void editar_ciudadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_ciudadFocusLost
+        if(editar_ciudad.getText().length() == 0){
+           addPlaceholder(editar_ciudad);
+           editar_ciudad.setText("Ciudad");
+        }
+    }//GEN-LAST:event_editar_ciudadFocusLost
+
+    private void editar_telefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_telefonoFocusGained
+        if(editar_telefono.getText().equals("Número de teléfono")){
+           editar_telefono.setText(null);
+           editar_telefono.requestFocus();
+            // quitar place holder
+           removePlaceholder(editar_telefono);
+        }
+    }//GEN-LAST:event_editar_telefonoFocusGained
+
+    private void editar_telefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editar_telefonoFocusLost
+        if(editar_telefono.getText().length() == 0){
+           addPlaceholder(editar_telefono);
+           editar_telefono.setText("Número de teléfono");
+        }
+    }//GEN-LAST:event_editar_telefonoFocusLost
+
+    private void buscar_barrioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_buscar_barrioFocusLost
+        if(buscar_barrio.getText().length() == 0){
+           addPlaceholder(buscar_barrio);
+           buscar_barrio.setText("Barrio de la sede");
+        }
+    }//GEN-LAST:event_buscar_barrioFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField buscar_barrio;
+    private javax.swing.JTextField buscar_sede;
+    private javax.swing.JTextField campo_barrio;
+    private javax.swing.JTextField campo_ciudad;
+    private javax.swing.JTextField campo_direccion;
+    private javax.swing.JTextField campo_telefono;
+    private javax.swing.JTextField editar_barrio;
+    private javax.swing.JTextField editar_ciudad;
+    private javax.swing.JTextField editar_direccion;
+    private javax.swing.JTextField editar_telefono;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -698,15 +968,5 @@ public class GestionSedeGerente extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator83;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField37;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
-    private javax.swing.JTextField jTextField49;
-    private javax.swing.JTextField jTextField51;
     // End of variables declaration//GEN-END:variables
 }
