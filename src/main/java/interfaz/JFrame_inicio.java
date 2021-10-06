@@ -28,8 +28,9 @@ public class JFrame_inicio extends javax.swing.JFrame {
      * Creates new form JFrame_inicio
      */
     public JFrame_inicio() {
-        this.setContentPane(fondo);
+        this.setContentPane(fondo);        
         initComponents();
+        this.setLocationRelativeTo(null);
 
     }
 

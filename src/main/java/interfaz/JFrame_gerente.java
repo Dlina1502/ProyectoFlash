@@ -17,9 +17,10 @@ import javax.swing.JPanel;
 public class JFrame_gerente extends javax.swing.JFrame {
     GestionUsuarioGerente gestionUsuario = new GestionUsuarioGerente();
     GestionSedeGerente gestionSede = new GestionSedeGerente();
-    
+    Reportes reporte = new Reportes();
     public JFrame_gerente() { 
         initComponents();
+        this.setLocationRelativeTo(null);
         jPanel7.add(gestionUsuario);
     }
 
@@ -39,6 +40,7 @@ public class JFrame_gerente extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,6 +81,13 @@ public class JFrame_gerente extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("REPORTES");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/META-INF/logo2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,17 +96,23 @@ public class JFrame_gerente extends javax.swing.JFrame {
             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(65, 65, 65))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2)
+                .addGap(12, 12, 12)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -125,6 +140,9 @@ public class JFrame_gerente extends javax.swing.JFrame {
         gestionSede.setVisible(false);
         jPanel7.remove(gestionSede);
         
+        reporte.setVisible(false);
+        jPanel7.remove(reporte);
+        
         jPanel7.add(gestionUsuario);
         gestionUsuario.setVisible(true);
       
@@ -140,9 +158,24 @@ public class JFrame_gerente extends javax.swing.JFrame {
         gestionUsuario.setVisible(false);
         jPanel7.remove(gestionUsuario);
         
+        reporte.setVisible(false);
+        jPanel7.remove(reporte);
+        
         jPanel7.add(gestionSede);
         gestionSede.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        gestionUsuario.setVisible(false);
+        jPanel7.remove(gestionUsuario);
+        
+        gestionSede.setVisible(false);
+        jPanel7.remove(gestionSede);
+        
+        jPanel7.add(reporte);
+        reporte.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -184,6 +217,7 @@ public class JFrame_gerente extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables

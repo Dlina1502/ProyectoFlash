@@ -8,14 +8,14 @@ package interfaz;
     import conexion_y_funciones.Funciones;
     import java.awt.Color;
     import interfaz.Factura;
-import java.awt.Dimension;
+    import java.awt.Dimension;
     import java.awt.event.ActionEvent;
     import java.sql.Connection;
     import java.sql.ResultSet;
     import java.sql.Statement;
-import javax.swing.JFrame;
+    import javax.swing.JFrame;
     import javax.swing.JOptionPane;
-import javax.swing.WindowConstants;
+    import javax.swing.WindowConstants;
     import javax.swing.table.DefaultTableModel;
 public class TerminalDeVentas extends javax.swing.JPanel {
     

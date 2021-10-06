@@ -24,15 +24,15 @@ public class ReporteCiudades extends JFrame{
     
     private Funciones funcion = new Funciones();
     
-    public ReporteCiudades (String nombreVentana, int anio){
+    public ReporteCiudades (String nombreVentana){
         super(nombreVentana);
-        JFreeChart barras = ChartFactory.createBarChart("Top 5 ciudades de destino ", "Ciudades de destino", "Número de envíos", crearDataset(anio), PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart barras = ChartFactory.createBarChart("Top 5 ciudades de destino" , "Ciudades de destino", "Número de envíos", crearDataset(), PlotOrientation.VERTICAL, true, true, false);
         ChartPanel chartPanel = new ChartPanel(barras);
         chartPanel.setPreferredSize(new Dimension (560,367));
         setContentPane(chartPanel);
     }
     
-    private CategoryDataset crearDataset(int anio){
+    private CategoryDataset crearDataset(){
         
         ArrayList<String> ciudades = new ArrayList<>();
         ArrayList<Integer> ventas = new ArrayList<>();

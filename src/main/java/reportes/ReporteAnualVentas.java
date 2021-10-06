@@ -26,7 +26,7 @@ public class ReporteAnualVentas extends JFrame{
     */
     public ReporteAnualVentas (String nombreVentana, int anio){
         super(nombreVentana);
-        JFreeChart barras = ChartFactory.createBarChart("Ventas del año "+anio, "Ventas", "Meses", crearDataset(anio), PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart barras = ChartFactory.createBarChart("Ventas del año "+anio, "Meses", "Total de ventas", crearDataset(anio), PlotOrientation.VERTICAL, true, true, false);
         ChartPanel chartPanel = new ChartPanel(barras);
         chartPanel.setPreferredSize(new Dimension (560,367));
         setContentPane(chartPanel);

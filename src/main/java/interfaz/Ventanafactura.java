@@ -16,6 +16,7 @@ public class Ventanafactura extends javax.swing.JFrame {
      */
     public Ventanafactura() {
         initComponents();
+        this.setLocationRelativeTo(null);
         Factura factura = new Factura();
         this.setContentPane(factura);
     }
