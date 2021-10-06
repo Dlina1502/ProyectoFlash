@@ -13,16 +13,18 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
- * Clase creada para generar reporte mensual de las ventas 
+ *
  * @author Usuario
  */
-public class ReporteVentaSedes extends JFrame{
-    public ReporteVentaSedes (String nombreVentana, String anio){
+public class ReporteCiudades extends JFrame{
+    
+    public ReporteCiudades (String nombreVentana, int anio){
         super(nombreVentana);
-        JFreeChart torta = ChartFactory.createPieChart("Ventas por sede durante el año "+anio, createDataset(), true, true, false);
+        JFreeChart barras = ChartFactory.createBarChart("Top 5 ciudades de destino en el año "+anio, "Ventas", "Ciudades de destino", crearDataset(anio), PlotOrientation.VERTICAL, true, true, false);
     }
     
     private CategoryDataset crearDataset(int anio){
+        int ciudad1 = 0, ciudad2 = 0, ciudad3 = 0, ciudad4=0, ciudad5=0;
         
         
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -30,5 +32,4 @@ public class ReporteVentaSedes extends JFrame{
         
         return dataset;
     }
-    
 }

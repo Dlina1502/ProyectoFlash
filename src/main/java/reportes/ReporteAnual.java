@@ -79,8 +79,6 @@ public class ReporteAnual extends JFrame{
         dataset.addValue(nov, escala11, "Ventas por mes");
         dataset.addValue(dic, escala12, "Ventas por mes");
         
-        System.out.print(oct);
-        
         return dataset;
     }
 }
