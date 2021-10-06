@@ -40,14 +40,14 @@ public class Main {
      */
     public static void main(String[] args) throws SQLException, URISyntaxException {
         // TODO code application logic here
-        ReporteAnualVentas reporte = new ReporteAnualVentas ("Reporte 1", 2021);
+        /*ReporteAnualVentas reporte = new ReporteAnualVentas ("Reporte 1", 2021);
         reporte.setSize(800, 400);
         reporte.setLocationRelativeTo(null);
         reporte.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        reporte.setVisible(true);
+        reporte.setVisible(true);*/
                 
         //new JFrame_inicio().setVisible(true);
-        //new JFrame_operador().setVisible(true);
+        new JFrame_operador().setVisible(true);
     }
 
     
