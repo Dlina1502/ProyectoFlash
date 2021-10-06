@@ -560,4 +560,16 @@ public class Funciones extends Conexion{
             JOptionPane.showMessageDialog(null, "Hubo un error en el proceso, no se ha elimnado nada");
         }
     }
+    
+    public void consultaVentasMeses(int[][] arreglo, int anio){
+        try{
+            sql = "select EXTRACT(MONTH FROM fecha),count (id_factura) from factura where EXTRACT(YEAR FROM fecha) = "+anio+" group by extract(MONTH from fecha);";
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()){
+                arreglo[resultSet.getInt(1)-1][0] =  resultSet.getInt(2);
+            }                  
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error en el proceso, no se consultó nada");
+        }
+    }
 }

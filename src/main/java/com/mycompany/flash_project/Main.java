@@ -15,6 +15,8 @@ import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.WindowConstants;
+import reportes.ReporteAnual;
 
 
 
@@ -37,7 +39,12 @@ public class Main {
         
         
         //new JFrame_inicio().setVisible(true);
-        new JFrame_operador().setVisible(true);
+        //new JFrame_gerente().setVisible(true);
+        ReporteAnual reporte = new ReporteAnual("Reporte 1", 2021);
+        reporte.setSize(800, 400);
+        reporte.setLocationRelativeTo(null);
+        reporte.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        reporte.setVisible(true);
     }
 
     
